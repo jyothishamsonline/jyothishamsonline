@@ -9,40 +9,32 @@
     body { background: linear-gradient(to right, #fdf6e3, #fce7f3); }
     .fade-section { animation: fadeIn 1s ease-in-out; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
-    .navarekna {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      max-width: 400px;
-      margin: 20px auto;
-      text-align: center;
-    }
-    .navarekna div {
-      border: 2px solid #f97316;
-      padding: 15px;
-      border-radius: 12px;
-      background: #fff7ed;
-      font-weight: bold;
-      transition: transform 0.2s ease;
-    }
-    .navarekna div:hover { transform: scale(1.1); background: #fde68a; }
   </style>
 </head>
 <body class="font-sans">
 
   <!-- Navigation -->
-  <nav class="bg-orange-600 text-white p-4 shadow-lg flex justify-between items-center">
-    <h1 class="text-2xl font-bold">🌟 Jyothishamsonline</h1>
-    <div class="space-x-6">
-      <button onclick="showSection('home')" class="hover:underline">Home</button>
-      <button onclick="showSection('posts')" class="hover:underline">Posts</button>
-      <button onclick="showSection('admin')" class="hover:underline">Admin</button>
+  <nav class="bg-orange-600 text-white p-4 shadow-lg">
+    <div class="flex justify-between items-center">
+      <h1 class="text-xl sm:text-2xl font-bold">🌟 Jyothishamsonline</h1>
+      <button class="sm:hidden" onclick="toggleMenu()">☰</button>
+      <div id="menu" class="hidden sm:flex space-x-6">
+        <button onclick="showSection('home')" class="hover:underline">Home</button>
+        <button onclick="showSection('posts')" class="hover:underline">Posts</button>
+        <button onclick="showSection('admin')" class="hover:underline">Admin</button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden flex-col space-y-2 mt-3 sm:hidden">
+      <button onclick="showSection('home')" class="hover:underline text-left">Home</button>
+      <button onclick="showSection('posts')" class="hover:underline text-left">Posts</button>
+      <button onclick="showSection('admin')" class="hover:underline text-left">Admin</button>
     </div>
   </nav>
 
   <!-- Home Section -->
-  <section id="home" class="p-10 fade-section">
-    <h2 class="text-3xl font-bold mb-6 text-center">🔮 Submit Astrology Request</h2>
+  <section id="home" class="p-5 sm:p-10 fade-section">
+    <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-center">🔮 Submit Astrology Request</h2>
     <form id="astroForm" action="https://formspree.io/f/mvgbdpna" method="POST"
       class="max-w-lg mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4">
       
@@ -50,37 +42,19 @@
       <input type="date" name="dob" required class="w-full p-3 border rounded-lg">
       <input type="time" name="time" required class="w-full p-3 border rounded-lg">
       <input type="text" name="place" placeholder="Place of Birth" required class="w-full p-3 border rounded-lg">
-      
+
       <!-- Dropdown for Star -->
       <select name="star" required class="w-full p-3 border rounded-lg">
         <option value="">Select Your Star</option>
-        <option>Ashwini</option>
-        <option>Bharani</option>
-        <option>Krittika</option>
-        <option>Rohini</option>
-        <option>Mrigashira</option>
-        <option>Ardra</option>
-        <option>Punarvasu</option>
-        <option>Pushya</option>
-        <option>Ashlesha</option>
-        <option>Magha</option>
-        <option>Purva Phalguni</option>
-        <option>Uttara Phalguni</option>
-        <option>Hasta</option>
-        <option>Chitra</option>
-        <option>Swati</option>
-        <option>Vishakha</option>
-        <option>Anuradha</option>
-        <option>Jyeshtha</option>
-        <option>Mula</option>
-        <option>Purva Ashadha</option>
-        <option>Uttara Ashadha</option>
-        <option>Shravana</option>
-        <option>Dhanishta</option>
-        <option>Shatabhisha</option>
-        <option>Purva Bhadrapada</option>
-        <option>Uttara Bhadrapada</option>
-        <option>Revati</option>
+        <option>Ashwini</option><option>Bharani</option><option>Krittika</option>
+        <option>Rohini</option><option>Mrigashira</option><option>Ardra</option>
+        <option>Punarvasu</option><option>Pushya</option><option>Ashlesha</option>
+        <option>Magha</option><option>Purva Phalguni</option><option>Uttara Phalguni</option>
+        <option>Hasta</option><option>Chitra</option><option>Swati</option>
+        <option>Vishakha</option><option>Anuradha</option><option>Jyeshtha</option>
+        <option>Mula</option><option>Purva Ashadha</option><option>Uttara Ashadha</option>
+        <option>Shravana</option><option>Dhanishta</option><option>Shatabhisha</option>
+        <option>Purva Bhadrapada</option><option>Uttara Bhadrapada</option><option>Revati</option>
       </select>
 
       <input type="email" name="email" placeholder="Email" required class="w-full p-3 border rounded-lg">
@@ -90,28 +64,20 @@
 
     <!-- Horoscope Image -->
     <div class="max-w-3xl mx-auto mt-10 text-center">
-      <img src="astrology-28-1674540017.jpg" alt="Horoscope" class="mx-auto rounded-2xl shadow-lg">
+      <img src="astrology-28-1674540017.jpg" alt="Horoscope" class="mx-auto rounded-2xl shadow-lg w-full max-w-md">
       <p class="mt-3 text-gray-700">ഇന്നത്തെ നാളഫലം (Today’s Horoscope)</p>
-    </div>
-
-    <!-- Nava Rekna -->
-    <h2 class="text-2xl font-bold mt-10 text-center text-orange-700">🪐 Nava Rekna (Navagraha Chart)</h2>
-    <div class="navarekna">
-      <div>☉ Sun</div><div>☽ Moon</div><div>♂ Mars</div>
-      <div>☿ Mercury</div><div>♃ Jupiter</div><div>♀ Venus</div>
-      <div>♄ Saturn</div><div>☊ Rahu</div><div>☋ Ketu</div>
     </div>
   </section>
 
   <!-- Posts Section -->
-  <section id="posts" class="p-10 fade-section hidden">
-    <h2 class="text-3xl font-bold text-center mb-6">📜 Astrology Posts</h2>
+  <section id="posts" class="p-5 sm:p-10 fade-section hidden">
+    <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6">📜 Astrology Posts</h2>
     <div id="postsContainer" class="space-y-4 max-w-3xl mx-auto"></div>
   </section>
 
   <!-- Admin Section -->
-  <section id="admin" class="p-10 fade-section hidden">
-    <h2 class="text-3xl font-bold text-center mb-6">🔑 Admin Login</h2>
+  <section id="admin" class="p-5 sm:p-10 fade-section hidden">
+    <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6">🔑 Admin Login</h2>
     <div id="loginForm" class="max-w-sm mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4">
       <input type="password" id="adminPass" placeholder="Enter Admin Password" class="w-full p-3 border rounded-lg">
       <button onclick="checkLogin()" class="w-full bg-orange-600 text-white p-3 rounded-lg hover:bg-orange-700">Login</button>
@@ -126,28 +92,39 @@
 
   <!-- Scripts -->
   <script>
+    let isAdmin = false;
+
+    function toggleMenu() {
+      document.getElementById("mobileMenu").classList.toggle("hidden");
+    }
     function showSection(id) {
       document.querySelectorAll("section").forEach(sec => sec.classList.add("hidden"));
       document.getElementById(id).classList.remove("hidden");
+      document.getElementById("mobileMenu").classList.add("hidden");
     }
-
     function checkLogin() {
       const pass = document.getElementById("adminPass").value;
       if (pass === "astro123") {
+        isAdmin = true;
         document.getElementById("loginForm").classList.add("hidden");
         document.getElementById("postForm").classList.remove("hidden");
+        alert("Admin logged in. You can now delete posts.");
       } else {
         alert("Wrong password!");
       }
     }
-
     function addPost() {
       const title = document.getElementById("postTitle").value;
       const content = document.getElementById("postContent").value;
       if (!title || !content) { alert("Please fill all fields!"); return; }
       const postDiv = document.createElement("div");
-      postDiv.className = "bg-white p-4 rounded-xl shadow-lg";
-      postDiv.innerHTML = `<h3 class="text-xl font-bold">${title}</h3><p>${content}</p>`;
+      postDiv.className = "bg-white p-4 rounded-xl shadow-lg relative";
+      postDiv.innerHTML = `
+        <h3 class="text-xl font-bold">${title}</h3>
+        <p>${content}</p>
+        ${isAdmin ? `<button onclick="this.parentElement.remove()" 
+          class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-sm hover:bg-red-600">Delete</button>` : ""}
+      `;
       document.getElementById("postsContainer").appendChild(postDiv);
       document.getElementById("postTitle").value = "";
       document.getElementById("postContent").value = "";
