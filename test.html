@@ -45,11 +45,13 @@
       <div id="menu" class="hidden sm:flex space-x-6">
         <button onclick="showSection('home')" class="hover:underline">HOME</button>
         <button onclick="showSection('posts')" class="hover:underline">POSTS</button>
+        <button onclick="showSection('customerLogin')" class="hover:underline">CUSTOMER LOGIN</button>
       </div>
     </div>
     <div id="mobileMenu" class="hidden flex-col space-y-2 mt-3 sm:hidden">
       <button onclick="showSection('home')" class="hover:underline text-left">HOME</button>
       <button onclick="showSection('posts')" class="hover:underline text-left">POSTS</button>
+      <button onclick="showSection('customerLogin')" class="hover:underline text-left">CUSTOMER LOGIN</button>
     </div>
   </nav>
 
@@ -78,7 +80,7 @@
               <p class="text-gray-800"><span class="font-semibold">Anjali K:</span> Sherly മൂലം. കണ്ണാ കാത്തോണേ 🌟</p>
             </div>
             <div class="bg-orange-50 p-4 rounded-xl shadow-sm">
-              <p class="text-gray-800"><span class="font-semibold">Ramesh P:</span> thirumeni nta marriage kazinju  🔮</p>
+              <p class="text-gray-800"><span class="font-semibold">Ramesh P:</span> thirumeni nta marriage kazinju 🔮</p>
             </div>
             <div class="bg-orange-50 p-4 rounded-xl shadow-sm">
               <p class="text-gray-800"><span class="font-semibold">Priya S:</span> Excellent guidance. Highly recommend! 🙏</p>
@@ -163,7 +165,6 @@
               class="w-full p-2 border rounded-md focus:ring-2 focus:ring-orange-400 focus:border-orange-400 text-xs"></textarea>
           </div>
 
-          <!-- WhatsApp notice -->
           <p class="text-gray-700 text-xs mt-1 text-center">
             📩 Your horoscope result will be sent to your WhatsApp number within 7 days.
           </p>
@@ -221,6 +222,7 @@
       <p class="text-gray-700">📞 Mobile: <a href="tel:9526522065" class="text-orange-600 hover:underline">+91 9526 522 065</a></p>
       <p class="text-gray-700">✉️ Email: <a href="mailto:jyothishamsonline@gmail.com" class="text-orange-600 hover:underline">jyothishamsonline@gmail.com</a></p>
       <p class="text-gray-700">🏠 Address: <span class="text-orange-600 font-semibold">Midhun Jyothishalayam, PALAKKAD 678013</span></p>
+      <p>🌐 YouTube: <a href="https://www.youtube.com/@Jyothishamsonline" target="_blank" class="text-orange-600 hover:underline">Visit Channel</a></p>
       <p><a href="#" id="adminLink" class="text-gray-500 hover:underline text-sm cursor-pointer">ADMIN LOGIN</a></p>
     </div>
 
@@ -252,24 +254,54 @@
     </div>
   </section>
 
+  <!-- Customer Login Section -->
+  <section id="customerLogin" class="p-5 sm:p-10 fade-section hidden">
+    <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 uppercase">🔐 CUSTOMER LOGIN</h2>
+
+    <div id="customerLoginForm" class="max-w-sm mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4">
+      <input type="email" id="customerEmail" placeholder="ENTER EMAIL" class="w-full p-3 border rounded-lg" required>
+      <input type="password" id="customerPassword" placeholder="ENTER PASSWORD" class="w-full p-3 border rounded-lg" required>
+      <button onclick="customerLogin()" class="w-full bg-orange-600 text-white p-3 rounded-lg hover:bg-orange-700 uppercase">
+        LOGIN
+      </button>
+    </div>
+
+    <div id="customerDashboard" class="hidden max-w-lg mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4">
+      <h3 class="text-xl font-bold text-center text-orange-600">Welcome, Customer!</h3>
+      <p>You are logged in. You can now book services and view your history.</p>
+      <button onclick="customerLogout()" class="w-full bg-red-500 text-white p-3 rounded-lg hover:bg-red-600 uppercase">
+        LOGOUT
+      </button>
+    </div>
+  </section>
+
   <script>
     let isAdmin = false;
 
+    // Mobile menu toggle
     function toggleMenu() {
       document.getElementById("mobileMenu").classList.toggle("hidden");
     }
 
+    // Section switcher
     function showSection(id) {
       document.querySelectorAll("section").forEach(sec => sec.classList.add("hidden"));
       document.getElementById(id).classList.remove("hidden");
       document.getElementById("mobileMenu").classList.add("hidden");
+
+      if (id !== "customerLogin") {
+        document.getElementById("customerDashboard")?.classList.add("hidden");
+        document.getElementById("customerLoginForm")?.classList.remove("hidden");
+      }
     }
 
+    // Admin link
     document.getElementById("adminLink").addEventListener("click", function (e) {
       e.preventDefault();
       showSection("admin");
     });
 
+    // Admin login
     function checkLogin() {
       const pass = document.getElementById("adminPass").value;
       if (pass === "astro123") {
@@ -282,6 +314,7 @@
       }
     }
 
+    // Add post
     function addPost() {
       const title = document.getElementById("postTitle").value;
       const content = document.getElementById("postContent").value;
@@ -305,6 +338,7 @@
       showSection("posts");
     }
 
+    // Service selection
     function selectService(serviceName) {
       showSection('home');
       document.getElementById('formTitle').innerText = '🔮 ' + serviceName;
@@ -313,6 +347,34 @@
       document.getElementById('paymentTitle').innerText = '💰 PAYMENT FOR ' + serviceName.toUpperCase();
       document.getElementById('paymentAmount').innerText = 'SCAN THE QR CODE OR USE UPI TO PAY ₹700';
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Customer login (sample front-end)
+    const customers = [
+      { email: "customer1@example.com", password: "pass123" },
+      { email: "customer2@example.com", password: "pass456" }
+    ];
+
+    function customerLogin() {
+      const email = document.getElementById("customerEmail").value;
+      const password = document.getElementById("customerPassword").value;
+
+      const user = customers.find(c => c.email === email && c.password === password);
+
+      if (user) {
+        alert("Login successful!");
+        document.getElementById("customerLoginForm").classList.add("hidden");
+        document.getElementById("customerDashboard").classList.remove("hidden");
+      } else {
+        alert("Invalid email or password!");
+      }
+    }
+
+    function customerLogout() {
+      document.getElementById("customerDashboard").classList.add("hidden");
+      document.getElementById("customerLoginForm").classList.remove("hidden");
+      document.getElementById("customerEmail").value = "";
+      document.getElementById("customerPassword").value = "";
     }
   </script>
 
