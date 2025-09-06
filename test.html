@@ -21,20 +21,22 @@
       <div id="menu" class="hidden sm:flex space-x-6">
         <button onclick="showSection('home')" class="hover:underline">Home</button>
         <button onclick="showSection('posts')" class="hover:underline">Posts</button>
-        <button onclick="showSection('admin')" class="hover:underline">Admin</button>
+        <!-- Admin button removed from nav -->
       </div>
     </div>
     <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden flex-col space-y-2 mt-3 sm:hidden">
       <button onclick="showSection('home')" class="hover:underline text-left">Home</button>
       <button onclick="showSection('posts')" class="hover:underline text-left">Posts</button>
-      <button onclick="showSection('admin')" class="hover:underline text-left">Admin</button>
+      <!-- Admin button removed from mobile menu -->
     </div>
   </nav>
 
   <!-- Home Section -->
   <section id="home" class="p-5 sm:p-10 fade-section">
     <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-center">🔮 Submit Astrology Request</h2>
+    
+    <!-- Astrology Form -->
     <form id="astroForm" action="https://formspree.io/f/mvgbdpna" method="POST"
       class="max-w-lg mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4">
       
@@ -62,6 +64,12 @@
       <button type="submit" class="w-full bg-orange-600 text-white p-3 rounded-lg hover:bg-orange-700 transition">Submit</button>
     </form>
 
+    <!-- Contact Info -->
+    <div class="max-w-3xl mx-auto mt-6 text-center bg-white p-4 rounded-2xl shadow-lg space-y-2">
+      <p class="text-gray-700">📞 Mobile: <a href="tel:9526522065" class="text-orange-600 hover:underline">9526522065</a></p>
+      <p class="text-gray-700">✉️ Email: <a href="mailto:jythoshams@gmail.com" class="text-orange-600 hover:underline">jythoshams@gmail.com</a></p>
+    </div>
+
     <!-- Horoscope Image -->
     <div class="max-w-3xl mx-auto mt-10 text-center">
       <img src="astrology-28-1674540017.jpg" alt="Horoscope" class="mx-auto rounded-2xl shadow-lg w-full max-w-md">
@@ -75,7 +83,7 @@
     <div id="postsContainer" class="space-y-4 max-w-3xl mx-auto"></div>
   </section>
 
-  <!-- Admin Section -->
+  <!-- Admin Section (Hidden by default) -->
   <section id="admin" class="p-5 sm:p-10 fade-section hidden">
     <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6">🔑 Admin Login</h2>
     <div id="loginForm" class="max-w-sm mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4">
@@ -92,16 +100,26 @@
 
   <!-- Scripts -->
   <script>
+    // Show admin only if URL ends with /admin
+    document.addEventListener("DOMContentLoaded", () => {
+      const path = window.location.pathname.toLowerCase();
+      if (path.endsWith("/admin")) {
+        document.getElementById("admin").classList.remove("hidden");
+      }
+    });
+
     let isAdmin = false;
 
     function toggleMenu() {
       document.getElementById("mobileMenu").classList.toggle("hidden");
     }
+
     function showSection(id) {
       document.querySelectorAll("section").forEach(sec => sec.classList.add("hidden"));
       document.getElementById(id).classList.remove("hidden");
       document.getElementById("mobileMenu").classList.add("hidden");
     }
+
     function checkLogin() {
       const pass = document.getElementById("adminPass").value;
       if (pass === "astro123") {
@@ -113,18 +131,24 @@
         alert("Wrong password!");
       }
     }
+
     function addPost() {
       const title = document.getElementById("postTitle").value;
       const content = document.getElementById("postContent").value;
       if (!title || !content) { alert("Please fill all fields!"); return; }
+
       const postDiv = document.createElement("div");
       postDiv.className = "bg-white p-4 rounded-xl shadow-lg relative";
-      postDiv.innerHTML = `
-        <h3 class="text-xl font-bold">${title}</h3>
-        <p>${content}</p>
-        ${isAdmin ? `<button onclick="this.parentElement.remove()" 
-          class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-sm hover:bg-red-600">Delete</button>` : ""}
-      `;
+      postDiv.innerHTML = `<h3 class="text-xl font-bold">${title}</h3><p>${content}</p>`;
+
+      if (isAdmin) {
+        const delBtn = document.createElement("button");
+        delBtn.textContent = "Delete";
+        delBtn.className = "absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-sm hover:bg-red-600";
+        delBtn.onclick = () => postDiv.remove();
+        postDiv.appendChild(delBtn);
+      }
+
       document.getElementById("postsContainer").appendChild(postDiv);
       document.getElementById("postTitle").value = "";
       document.getElementById("postContent").value = "";
