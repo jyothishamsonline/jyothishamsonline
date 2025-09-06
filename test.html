@@ -1,113 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jyothishamsonline</title>
+  <title>Jyothishams Online</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background: linear-gradient(to right, #fdf6e3, #fce7f3); }
-    .fade-section { animation: fadeIn 1s ease-in-out; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
+    body {
+      background: linear-gradient(to right, #fdf6e3, #fce7f3);
+    }
+
+    .fade-section {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .service-card:hover {
+      cursor: pointer;
+      transform: scale(1.03);
+      transition: transform 0.3s ease;
+    }
   </style>
 </head>
+
 <body class="font-sans">
 
   <!-- Navigation -->
   <nav class="bg-orange-600 text-white p-4 shadow-lg">
     <div class="flex justify-between items-center">
-      <h1 class="text-xl sm:text-2xl font-bold">🌟 Jyothishamsonline</h1>
+      <h1 class="text-xl sm:text-2xl font-bold">🌟 ജ്യോതിഷം ASTROLOGY</h1>
       <button class="sm:hidden" onclick="toggleMenu()">☰</button>
       <div id="menu" class="hidden sm:flex space-x-6">
-        <button onclick="showSection('home')" class="hover:underline">Home</button>
-        <button onclick="showSection('posts')" class="hover:underline">Posts</button>
-        <!-- Admin button removed from nav -->
+        <button onclick="showSection('home')" class="hover:underline">HOME</button>
+        <button onclick="showSection('posts')" class="hover:underline">POSTS</button>
       </div>
     </div>
-    <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden flex-col space-y-2 mt-3 sm:hidden">
-      <button onclick="showSection('home')" class="hover:underline text-left">Home</button>
-      <button onclick="showSection('posts')" class="hover:underline text-left">Posts</button>
-      <!-- Admin button removed from mobile menu -->
+      <button onclick="showSection('home')" class="hover:underline text-left">HOME</button>
+      <button onclick="showSection('posts')" class="hover:underline text-left">POSTS</button>
     </div>
   </nav>
 
   <!-- Home Section -->
   <section id="home" class="p-5 sm:p-10 fade-section">
-    <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-center">🔮 Submit Astrology Request</h2>
-    
-    <!-- Astrology Form -->
-    <form id="astroForm" action="https://formspree.io/f/mvgbdpna" method="POST"
-      class="max-w-lg mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4">
-      
-      <input type="text" name="name" placeholder="Full Name" required class="w-full p-3 border rounded-lg">
-      <input type="date" name="dob" required class="w-full p-3 border rounded-lg">
-      <input type="time" name="time" required class="w-full p-3 border rounded-lg">
-      <input type="text" name="place" placeholder="Place of Birth" required class="w-full p-3 border rounded-lg">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 px-4 sm:px-6">
 
-      <!-- Dropdown for Star -->
-      <select name="star" required class="w-full p-3 border rounded-lg">
-        <option value="">Select Your Star</option>
-        <option>Ashwini</option><option>Bharani</option><option>Krittika</option>
-        <option>Rohini</option><option>Mrigashira</option><option>Ardra</option>
-        <option>Punarvasu</option><option>Pushya</option><option>Ashlesha</option>
-        <option>Magha</option><option>Purva Phalguni</option><option>Uttara Phalguni</option>
-        <option>Hasta</option><option>Chitra</option><option>Swati</option>
-        <option>Vishakha</option><option>Anuradha</option><option>Jyeshtha</option>
-        <option>Mula</option><option>Purva Ashadha</option><option>Uttara Ashadha</option>
-        <option>Shravana</option><option>Dhanishta</option><option>Shatabhisha</option>
-        <option>Purva Bhadrapada</option><option>Uttara Bhadrapada</option><option>Revati</option>
-      </select>
+      <!-- Left Column: Booking Form + Customer Highlights -->
+      <div class="space-y-6">
 
-      <input type="email" name="email" placeholder="Email" required class="w-full p-3 border rounded-lg">
-      <input type="tel" name="phone" placeholder="Phone Number" required class="w-full p-3 border rounded-lg">
-      <button type="submit" class="w-full bg-orange-600 text-white p-3 rounded-lg hover:bg-orange-700 transition">Submit</button>
-    </form>
+        <!-- Booking Section -->
+        <div class="bg-white p-6 rounded-2xl shadow-lg space-y-4 text-center">
+          <h2 class="text-xl font-bold text-orange-600">📝 നവരക്നങ്ങൾ ബുക്കിങ് (4999)</h2>
+          <p class="text-gray-700 text-sm">CLICK BELOW TO FILL THE BOOKING FORM:</p>
+          <a href="https://forms.gle/6h4fwCTaiBVH9DJT8" target="_blank"
+            class="inline-block mt-2 bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition font-semibold">
+            OPEN BOOKING FORM
+          </a>
+        </div>
+
+        <!-- Customer Comments / Highlights -->
+        <div class="bg-white p-6 rounded-2xl shadow-lg space-y-4">
+          <h3 class="text-lg font-bold text-orange-600 mb-4 text-center uppercase">💬 Customer Highlights</h3>
+          <div class="space-y-3">
+            <div class="bg-orange-50 p-4 rounded-xl shadow-sm">
+              <p class="text-gray-800"><span class="font-semibold">Anjali K:</span> Sherly മൂലം. കണ്ണാ കാത്തോണേ 🌟</p>
+            </div>
+            <div class="bg-orange-50 p-4 rounded-xl shadow-sm">
+              <p class="text-gray-800"><span class="font-semibold">Ramesh P:</span> thirumeni nta marriage kazinju  🔮</p>
+            </div>
+            <div class="bg-orange-50 p-4 rounded-xl shadow-sm">
+              <p class="text-gray-800"><span class="font-semibold">Priya S:</span> Excellent guidance. Highly recommend! 🙏</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Astrology Form + Payment -->
+      <div class="space-y-6">
+
+        <!-- Astrology Form -->
+        <form id="astroForm" action="https://formspree.io/f/mvgbdpna" method="POST"
+          class="bg-gradient-to-br from-orange-100 to-pink-100 p-6 rounded-2xl shadow-lg space-y-3 text-xs max-w-sm mx-auto">
+
+          <h2 id="formTitle" class="text-lg font-extrabold text-center text-orange-600 mb-2 uppercase">🔮 JATHAKAM - Horoscope</h2>
+
+          <input type="hidden" name="service" id="serviceInput" value="Jathakam - Horoscope">
+          <input type="hidden" name="amount" id="amountInput" value="700">
+
+          <div class="flex flex-col space-y-1">
+            <label class="uppercase font-semibold text-gray-700 text-xs">NAME</label>
+            <input type="text" name="name" placeholder="ENTER FULL NAME" required
+              class="w-full p-2 border rounded-md focus:ring-2 focus:ring-orange-400 focus:border-orange-400 text-xs">
+          </div>
+
+          <div class="flex flex-col space-y-1">
+            <label class="uppercase font-semibold text-gray-700 text-xs">GENDER</label>
+            <select name="gender" required
+              class="w-full p-2 border rounded-md focus:ring-2 focus:ring-orange-400 focus:border-orange-400 text-xs">
+              <option value="">SELECT GENDER</option>
+              <option>MALE</option>
+              <option>FEMALE</option>
+            </select>
+          </div>
+
+          <div class="flex flex-col space-y-1">
+            <label class="uppercase font-semibold text-gray-700 text-xs">DATE OF BIRTH</label>
+            <input type="date" name="dob" required
+              class="w-full p-2 border rounded-md focus:ring-2 focus:ring-orange-400 focus:border-orange-400 text-xs">
+          </div>
+
+          <div class="flex flex-col space-y-1">
+            <label class="uppercase font-semibold text-gray-700 text-xs">TIME OF BIRTH</label>
+            <input type="time" name="time" required
+              class="w-full p-2 border rounded-md focus:ring-2 focus:ring-orange-400 focus:border-orange-400 text-xs">
+          </div>
+
+          <div class="flex flex-col space-y-1">
+            <label class="uppercase font-semibold text-gray-700 text-xs">PLACE OF BIRTH</label>
+            <input type="text" name="place" placeholder="ENTER PLACE OF BIRTH" required
+              class="w-full p-2 border rounded-md focus:ring-2 focus:ring-orange-400 focus:border-orange-400 text-xs">
+          </div>
+
+          <div class="flex flex-col space-y-1">
+            <label class="uppercase font-semibold text-gray-700 text-xs">STAR</label>
+            <select name="star" required
+              class="w-full p-2 border rounded-md focus:ring-2 focus:ring-orange-400 focus:border-orange-400 text-xs">
+              <option value="">SELECT YOUR STAR</option>
+              <option>ASHWATHI</option><option>BHARANI</option><option>KARTHIKA</option>
+              <option>ROHINI</option><option>MAGAYIRAM</option><option>THIRUVATHIRA</option>
+              <option>PUNARTHAM</option><option>POOYAM</option><option>AYILYAM</option>
+              <option>MAGHA</option><option>PURAM</option><option>UTRAM</option>
+              <option>ATHAM</option><option>CHITHRA</option><option>CHOTHI</option>
+              <option>VISHAKHAM</option><option>ANIZHAM</option><option>THRIKETTA</option>
+              <option>MULAM</option><option>PURADAM</option><option>UTTARADAM</option>
+              <option>THIRUVONAM</option><option>AVITTAM</option><option>CHATHAYAM</option>
+              <option>PURURUTTATHY</option><option>UTTARITTATHI</option><option>REVATHI</option>
+            </select>
+          </div>
+
+          <div class="flex flex-col space-y-1">
+            <label class="uppercase font-semibold text-gray-700 text-xs">PHONE NUMBER</label>
+            <input type="tel" name="phone" placeholder="ENTER PHONE NUMBER" required
+              class="w-full p-2 border rounded-md focus:ring-2 focus:ring-orange-400 focus:border-orange-400 text-xs">
+          </div>
+
+          <div class="flex flex-col space-y-1">
+            <label class="uppercase font-semibold text-gray-700 text-xs">COMMENTS / SUGGESTIONS</label>
+            <textarea name="comments" placeholder="WRITE YOUR COMMENTS OR SUGGESTIONS..."
+              class="w-full p-2 border rounded-md focus:ring-2 focus:ring-orange-400 focus:border-orange-400 text-xs"></textarea>
+          </div>
+
+          <!-- WhatsApp notice -->
+          <p class="text-gray-700 text-xs mt-1 text-center">
+            📩 Your horoscope result will be sent to your WhatsApp number within 7 days.
+          </p>
+
+          <button type="submit"
+            class="w-full bg-orange-600 text-white p-2 rounded-md hover:bg-orange-700 transition font-bold uppercase text-xs">
+            SUBMIT
+          </button>
+        </form>
+
+        <!-- Payment Section -->
+        <div id="paymentSection" class="bg-white p-6 rounded-2xl shadow-lg text-center text-xs max-w-sm mx-auto">
+          <h3 id="paymentTitle" class="text-lg font-bold text-orange-600 mb-2 uppercase">💰 PAYMENT FOR JATHAKAM - HOROSCOPE</h3>
+          <p class="text-gray-700 mb-2" id="paymentAmount">SCAN THE QR CODE OR USE UPI TO PAY ₹700</p>
+          <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 mx-auto w-40 h-40 flex items-center justify-center">
+            <img src="qr.jpeg" alt="UPI QR Code" class="max-w-full max-h-full rounded-lg">
+          </div>
+          <p class="text-gray-700 mt-2">UPI ID: <span class="font-semibold text-orange-600">jyothishams@ptyes</span></p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- OTHER SERVICES Section -->
+    <div class="max-w-6xl mx-auto mt-10">
+      <h2 class="text-xl sm:text-2xl font-bold text-center text-orange-600 mb-6 uppercase">💼 OTHER SERVICES ₹700 EACH</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 px-4 sm:px-6">
+        <div class="service-card bg-white p-4 rounded-xl shadow-lg text-center hover:shadow-2xl transition"
+          onclick="selectService('Jathakam - Horoscope')">🔮 Jathakam - Horoscope <br><span class="text-orange-600 font-bold">₹700</span></div>
+        <div class="service-card bg-white p-4 rounded-xl shadow-lg text-center hover:shadow-2xl transition"
+          onclick="selectService('Marriage Prediction')">🔮 Marriage Prediction <br><span class="text-orange-600 font-bold">₹700</span></div>
+        <div class="service-card bg-white p-4 rounded-xl shadow-lg text-center hover:shadow-2xl transition"
+          onclick="selectService('Job and Career')">🔮 Job and Career <br><span class="text-orange-600 font-bold">₹700</span></div>
+        <div class="service-card bg-white p-4 rounded-xl shadow-lg text-center hover:shadow-2xl transition"
+          onclick="selectService('Unhappy Marriage')">🔮 Unhappy Marriage <br><span class="text-orange-600 font-bold">₹700</span></div>
+        <div class="service-card bg-white p-4 rounded-xl shadow-lg text-center hover:shadow-2xl transition"
+          onclick="selectService('Laying Foundation Stone for House')">🔮 Laying Foundation Stone for House <br><span class="text-orange-600 font-bold">₹700</span></div>
+        <div class="service-card bg-white p-4 rounded-xl shadow-lg text-center hover:shadow-2xl transition"
+          onclick="selectService('Childbirth Problems')">🔮 Childbirth Problems <br><span class="text-orange-600 font-bold">₹700</span></div>
+        <div class="service-card bg-white p-4 rounded-xl shadow-lg text-center hover:shadow-2xl transition"
+          onclick="selectService('Education')">🔮 Education <br><span class="text-orange-600 font-bold">₹700</span></div>
+        <div class="service-card bg-white p-4 rounded-xl shadow-lg text-center hover:shadow-2xl transition"
+          onclick="selectService('Housewarming Muhurtham')">🔮 Housewarming Muhurtham <br><span class="text-orange-600 font-bold">₹700</span></div>
+        <div class="service-card bg-white p-4 rounded-xl shadow-lg text-center hover:shadow-2xl transition"
+          onclick="selectService('Choroonu Muhurtham')">🔮 Choroonu Muhurtham <br><span class="text-orange-600 font-bold">₹700</span></div>
+        <div class="service-card bg-white p-4 rounded-xl shadow-lg text-center hover:shadow-2xl transition"
+          onclick="selectService('Engagement / Marriage Muhurtham')">🔮 Engagement / Marriage Muhurtham <br><span class="text-orange-600 font-bold">₹700</span></div>
+        <div class="service-card bg-white p-4 rounded-xl shadow-lg text-center hover:shadow-2xl transition"
+          onclick="selectService('Find a Suitable Yantra')">🔮 Find a Suitable Yantra <br><span class="text-orange-600 font-bold">₹700</span></div>
+      </div>
+    </div>
 
     <!-- Contact Info -->
-    <div class="max-w-3xl mx-auto mt-6 text-center bg-white p-4 rounded-2xl shadow-lg space-y-2">
-      <p class="text-gray-700">📞 Mobile: <a href="tel:9526522065" class="text-orange-600 hover:underline">9526522065</a></p>
-      <p class="text-gray-700">✉️ Email: <a href="mailto:jythoshams@gmail.com" class="text-orange-600 hover:underline">jythoshams@gmail.com</a></p>
+    <div class="max-w-3xl mx-auto mt-8 text-center bg-white p-4 rounded-2xl shadow-lg space-y-2">
+      <p class="text-gray-700">📞 Mobile: <a href="tel:9526522065" class="text-orange-600 hover:underline">+91 9526 522 065</a></p>
+      <p class="text-gray-700">✉️ Email: <a href="mailto:jyothishamsonline@gmail.com" class="text-orange-600 hover:underline">jyothishamsonline@gmail.com</a></p>
+      <p class="text-gray-700">🏠 Address: <span class="text-orange-600 font-semibold">Midhun Jyothishalayam, PALAKKAD 678013</span></p>
+      <p><a href="#" id="adminLink" class="text-gray-500 hover:underline text-sm cursor-pointer">ADMIN LOGIN</a></p>
     </div>
 
-    <!-- Horoscope Image -->
-    <div class="max-w-3xl mx-auto mt-10 text-center">
-      <img src="astrology-28-1674540017.jpg" alt="Horoscope" class="mx-auto rounded-2xl shadow-lg w-full max-w-md">
-      <p class="mt-3 text-gray-700">ഇന്നത്തെ നാളഫലം (Today’s Horoscope)</p>
-    </div>
   </section>
 
   <!-- Posts Section -->
   <section id="posts" class="p-5 sm:p-10 fade-section hidden">
-    <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6">📜 Astrology Posts</h2>
+    <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 uppercase">📜 ASTROLOGY POSTS</h2>
     <div id="postsContainer" class="space-y-4 max-w-3xl mx-auto"></div>
   </section>
 
-  <!-- Admin Section (Hidden by default) -->
+  <!-- Admin Section -->
   <section id="admin" class="p-5 sm:p-10 fade-section hidden">
-    <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6">🔑 Admin Login</h2>
+    <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 uppercase">🔑 ADMIN LOGIN</h2>
     <div id="loginForm" class="max-w-sm mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4">
-      <input type="password" id="adminPass" placeholder="Enter Admin Password" class="w-full p-3 border rounded-lg">
-      <button onclick="checkLogin()" class="w-full bg-orange-600 text-white p-3 rounded-lg hover:bg-orange-700">Login</button>
+      <input type="password" id="adminPass" placeholder="ENTER ADMIN PASSWORD"
+        class="w-full p-3 border rounded-lg">
+      <button onclick="checkLogin()"
+        class="w-full bg-orange-600 text-white p-3 rounded-lg hover:bg-orange-700 uppercase">LOGIN</button>
     </div>
 
     <div id="postForm" class="hidden max-w-lg mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4">
-      <input type="text" id="postTitle" placeholder="Post Title" class="w-full p-3 border rounded-lg">
-      <textarea id="postContent" placeholder="Write your post..." class="w-full p-3 border rounded-lg"></textarea>
-      <button onclick="addPost()" class="w-full bg-orange-600 text-white p-3 rounded-lg hover:bg-orange-700">Add Post</button>
+      <input type="text" id="postTitle" placeholder="POST TITLE"
+        class="w-full p-3 border rounded-lg">
+      <textarea id="postContent" placeholder="WRITE YOUR POST..."
+        class="w-full p-3 border rounded-lg"></textarea>
+      <button onclick="addPost()"
+        class="w-full bg-orange-600 text-white p-3 rounded-lg hover:bg-orange-700 uppercase">ADD POST</button>
     </div>
   </section>
 
-  <!-- Scripts -->
   <script>
-    // Show admin only if URL ends with /admin
-    document.addEventListener("DOMContentLoaded", () => {
-      const path = window.location.pathname.toLowerCase();
-      if (path.endsWith("/admin")) {
-        document.getElementById("admin").classList.remove("hidden");
-      }
-    });
-
     let isAdmin = false;
 
     function toggleMenu() {
@@ -119,6 +264,11 @@
       document.getElementById(id).classList.remove("hidden");
       document.getElementById("mobileMenu").classList.add("hidden");
     }
+
+    document.getElementById("adminLink").addEventListener("click", function (e) {
+      e.preventDefault();
+      showSection("admin");
+    });
 
     function checkLogin() {
       const pass = document.getElementById("adminPass").value;
@@ -135,7 +285,7 @@
     function addPost() {
       const title = document.getElementById("postTitle").value;
       const content = document.getElementById("postContent").value;
-      if (!title || !content) { alert("Please fill all fields!"); return; }
+      if (!title || !content) { alert("PLEASE FILL ALL FIELDS!"); return; }
 
       const postDiv = document.createElement("div");
       postDiv.className = "bg-white p-4 rounded-xl shadow-lg relative";
@@ -143,7 +293,7 @@
 
       if (isAdmin) {
         const delBtn = document.createElement("button");
-        delBtn.textContent = "Delete";
+        delBtn.textContent = "DELETE";
         delBtn.className = "absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-sm hover:bg-red-600";
         delBtn.onclick = () => postDiv.remove();
         postDiv.appendChild(delBtn);
@@ -154,7 +304,18 @@
       document.getElementById("postContent").value = "";
       showSection("posts");
     }
+
+    function selectService(serviceName) {
+      showSection('home');
+      document.getElementById('formTitle').innerText = '🔮 ' + serviceName;
+      document.getElementById('serviceInput').value = serviceName;
+      document.getElementById('amountInput').value = '700';
+      document.getElementById('paymentTitle').innerText = '💰 PAYMENT FOR ' + serviceName.toUpperCase();
+      document.getElementById('paymentAmount').innerText = 'SCAN THE QR CODE OR USE UPI TO PAY ₹700';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   </script>
 
 </body>
+
 </html>
