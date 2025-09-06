@@ -27,20 +27,10 @@
 
   <!-- Navigation -->
   <nav class="bg-orange-600 text-white p-3 text-center space-x-6 font-medium shadow-md sticky top-0 z-50">
-    <button onclick="showSection('home')" class="hover:underline">Home</button>
-    <button onclick="showSection('posts')" class="hover:underline">Posts</button>
     <button onclick="showSection('astro-request')" class="hover:underline">Astro Request</button>
+    <button onclick="showSection('posts')" class="hover:underline">Posts</button>
     <button onclick="showSection('admin-login')" class="hover:underline">Admin</button>
   </nav>
-
-  <!-- Home -->
-  <section id="home" class="p-10 text-center fade-section">
-    <h2 class="text-3xl font-bold mb-4">Welcome to Jyothishamsonline</h2>
-    <p class="max-w-3xl mx-auto text-lg">
-      Discover the wisdom of Kerala astrology. Read detailed posts, explore astrological insights,
-      and request personalized horoscope analysis online.
-    </p>
-  </section>
 
   <!-- Posts Section -->
   <section id="posts" class="p-10 bg-white hidden fade-section">
@@ -49,7 +39,7 @@
   </section>
 
   <!-- Astrology Request Form -->
-  <section id="astro-request" class="p-10 bg-orange-50 hidden fade-section">
+  <section id="astro-request" class="p-10 bg-orange-50 fade-section">
     <h2 class="text-3xl font-bold mb-6 text-center">🔮 Submit Astrology Request</h2>
     <form id="astroForm" action="https://formspree.io/f/mvgbdpna" method="POST" class="max-w-lg mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4">
       
@@ -157,7 +147,7 @@
       active.classList.remove("hidden");
       setTimeout(() => active.classList.add("active"), 50);
     }
-    showSection("home");
+    showSection("astro-request"); // Default home is astro request
 
     // Load posts
     const postList = document.getElementById("post-list");
