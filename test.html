@@ -59,32 +59,61 @@ body {
 <div class="bg-white p-8 rounded-2xl shadow-xl" id="birthDetails">
   <h2 class="text-2xl font-bold text-emerald-700 text-center mb-6">🔮 Birth Details</h2>
   <input type="hidden" id="serviceInput" value="Jathakam / Horoscope">
+
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    <input id="name" placeholder="Full Name" class="p-3 border rounded-lg focus:ring-2 focus:ring-emerald-400">
-    <select id="gender" class="p-3 border rounded-lg focus:ring-2 focus:ring-emerald-400">
-      <option value="">Gender</option>
-      <option>Male</option>
-      <option>Female</option>
-    </select>
-    <input type="date" id="dob" class="p-3 border rounded-lg">
-    <!-- Birth Time text input -->
-    <input type="text" id="tob" placeholder="Birth Time (e.g. 10:30 AM)" class="p-3 border rounded-lg focus:ring-2 focus:ring-emerald-400">
+    <div>
+      <label for="name" class="block font-semibold text-gray-700">Full Name</label>
+      <input id="name" placeholder="Enter full name" class="p-3 border rounded-lg w-full focus:ring-2 focus:ring-emerald-400" required>
+    </div>
+    <div>
+      <label for="gender" class="block font-semibold text-gray-700">Gender</label>
+      <select id="gender" class="p-3 border rounded-lg w-full focus:ring-2 focus:ring-emerald-400" required>
+        <option value="">Select Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+    </div>
+    <div>
+      <label for="dob" class="block font-semibold text-gray-700">Date of Birth</label>
+      <input type="date" id="dob" class="p-3 border rounded-lg w-full" required>
+    </div>
+    <div>
+      <label for="tob" class="block font-semibold text-gray-700">Birth Time (AM/PM)</label>
+      <input type="text" id="tob" placeholder="e.g. 10:30 AM" class="p-3 border rounded-lg w-full focus:ring-2 focus:ring-emerald-400" required>
+    </div>
   </div>
-  <input id="place" placeholder="Place of Birth" class="w-full p-3 border rounded-lg mt-4">
-  <select id="nakshatram" class="w-full p-3 border rounded-lg mt-4">
-    <option value="">Nakshatram (if known)</option>
-    <option>Aswathi</option><option>Bharani</option><option>Karthika</option>
-    <option>Rohini</option><option>Makayiram</option><option>Thiruvathira</option>
-    <option>Punartham</option><option>Pooyam</option><option>Ayilyam</option>
-    <option>Magha</option><option>Puram</option><option>Uttaram</option>
-    <option>Atham</option><option>Chithra</option><option>Chothi</option>
-    <option>Vishakham</option><option>Anizam</option><option>Thriketta</option>
-    <option>Mulam</option><option>Puradam</option><option>Uttardam</option>
-    <option>Thiruvonam</option><option>Avittam</option><option>Chathayam</option>
-    <option>Pururuttathi</option><option>Uttaritathi</option><option>Revathi</option>
-  </select>
-  <input id="phone" placeholder="WhatsApp Number" pattern="[6-9][0-9]{9}" maxlength="10" class="w-full p-3 border rounded-lg mt-4">
-  <textarea id="comments" placeholder="Your questions (optional)" class="w-full p-3 border rounded-lg mt-4"></textarea>
+
+  <div class="mt-4">
+    <label for="place" class="block font-semibold text-gray-700">Place of Birth</label>
+    <input id="place" placeholder="Enter place of birth" class="w-full p-3 border rounded-lg" required>
+  </div>
+
+  <div class="mt-4">
+    <label for="nakshatram" class="block font-semibold text-gray-700">Nakshatram (if known)</label>
+    <select id="nakshatram" class="w-full p-3 border rounded-lg">
+      <option value="">Select Nakshatram</option>
+      <option>Aswathi</option><option>Bharani</option><option>Karthika</option>
+      <option>Rohini</option><option>Makayiram</option><option>Thiruvathira</option>
+      <option>Punartham</option><option>Pooyam</option><option>Ayilyam</option>
+      <option>Magha</option><option>Puram</option><option>Uttaram</option>
+      <option>Atham</option><option>Chithra</option><option>Chothi</option>
+      <option>Vishakham</option><option>Anizam</option><option>Thriketta</option>
+      <option>Mulam</option><option>Puradam</option><option>Uttardam</option>
+      <option>Thiruvonam</option><option>Avittam</option><option>Chathayam</option>
+      <option>Pururuttathi</option><option>Uttaritathi</option><option>Revathi</option>
+    </select>
+  </div>
+
+  <div class="mt-4">
+    <label for="phone" class="block font-semibold text-gray-700">WhatsApp Number</label>
+    <input id="phone" placeholder="Enter WhatsApp number" pattern="[6-9][0-9]{9}" maxlength="10" class="w-full p-3 border rounded-lg" required>
+  </div>
+
+  <div class="mt-4">
+    <label for="comments" class="block font-semibold text-gray-700">Your Questions (Optional)</label>
+    <textarea id="comments" placeholder="Any questions you want answered" class="w-full p-3 border rounded-lg"></textarea>
+  </div>
+
   <p class="text-xs text-center text-gray-500 mt-3">Your details are kept strictly confidential</p>
 </div>
 
@@ -111,7 +140,7 @@ body {
       <input type="date" id="groomDOB" class="p-2 border rounded">
     </div>
     <button onclick="checkPorutham()" class="w-full bg-emerald-600 text-white py-2 rounded font-bold hover:bg-emerald-700">Check Porutham</button>
-    <p id="poruthamResult" class="text-center font-bold text-green-700 mt-2"></p>
+    <p id="poruthamResult" class="text-center font-bold text-green-700 mt-2 whitespace-pre-line"></p>
   </div>
 </div>
 
@@ -144,27 +173,59 @@ body {
 <a href="https://wa.me/919526522065" class="fixed bottom-5 right-5 bg-emerald-600 text-white p-4 rounded-full shadow-xl text-xl">💬</a>
 
 <script>
+// PAYMENT FUNCTION
 function payNow() {
   const name = document.getElementById("name").value.trim();
   const phone = document.getElementById("phone").value.trim();
   const dob = document.getElementById("dob").value;
   const tob = document.getElementById("tob").value.trim();
   const place = document.getElementById("place").value.trim();
-  if (!name || !phone || !dob || !tob || !place) { alert("Please fill all required details"); return; }
+
+  if (!name || !phone || !dob || !tob || !place) { 
+    alert("Please fill all required details"); 
+    return; 
+  }
+
   const service = document.getElementById("serviceInput").value;
   const nak = document.getElementById("nakshatram").value || "";
-  const note = encodeURIComponent(service + " - " + name + (nak ? " - " + nak : "") + " - " + tob);
-  window.location.href = `upi://pay?pa=jyothishams@ptyes&pn=KeralaJyothisham&am=700&cu=INR&tn=${note}`;
+  const note = encodeURIComponent(
+    service + " - " + name + (nak ? " - " + nak : "") + 
+    " - DOB: " + dob + " - TOB: " + tob + " - Place: " + place
+  );
+
+  if(confirm("You are about to pay ₹700 for " + service + ". Proceed?")) {
+    window.location.href = `upi://pay?pa=jyothishams@ptyes&pn=KeralaJyothisham&am=700&cu=INR&tn=${note}`;
+  }
 }
 
-// Quick Porutham Checker
+// QUICK PORUTHAM CHECKER
 function checkPorutham() {
-  const score = Math.floor(Math.random() * 7) + 3; // Always 3-9
-  document.getElementById('poruthamResult').innerText = `Porutham Score: ${score} / 9`;
-  alert('Porutham check completed. Score: ' + score + '. Detailed analysis available via consultation.');
+  const brideName = document.getElementById("brideName").value.trim();
+  const groomName = document.getElementById("groomName").value.trim();
+  const brideDOB = document.getElementById("brideDOB").value;
+  const groomDOB = document.getElementById("groomDOB").value;
+
+  if(!brideName || !groomName || !brideDOB || !groomDOB) {
+    alert("Please fill all bride and groom details to check porutham.");
+    return;
+  }
+
+  const score = Math.floor(Math.random() * 7) + 3; // 3-9
+  let resultText = `Porutham Score: ${score} / 9\n\n`;
+
+  if(score <= 4) {
+    resultText += "⚠️ Low compatibility.\nConsultation recommended for detailed analysis.";
+  } else if(score <= 7) {
+    resultText += "✅ Moderate compatibility.\nDetailed consultation will provide guidance.";
+  } else {
+    resultText += "🌟 High compatibility.\nStill, detailed analysis is advised for auspicious planning.";
+  }
+
+  document.getElementById('poruthamResult').innerText = resultText;
+  alert("Porutham check completed. See details below the button.");
 }
 
-// Smooth scroll for clickable services
+// Smooth scroll
 document.querySelectorAll('a[href="#birthDetails"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
