@@ -8,10 +8,11 @@
 <meta name="keywords" content="Astrology, Jyothisham, Jathakam, Horoscope, Nakshatra">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-  html { scroll-behavior: smooth; }
-  body { background: radial-gradient(circle at top, #f0fdf4, #ecfeff, #f8fafc); }
-  .fade { animation: fadeIn 0.9s ease-in-out; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+body {
+  background: radial-gradient(circle at top, #f0fdf4, #ecfeff, #f8fafc);
+}
+.fade { animation: fadeIn 0.9s ease-in-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body class="font-sans text-gray-800 w-full">
@@ -35,12 +36,27 @@
   </div>
 </section>
 
+<!-- AVAILABLE SERVICES -->
+<section class="max-w-6xl mx-auto px-4 sm:px-8 py-12">
+<h2 class="text-4xl font-bold text-center text-emerald-700 mb-10">🔮 Available Consultations</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+  <a href="#birthDetails" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Marriage Prediction</a>
+  <a href="#birthDetails" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Career & Job</a>
+  <a href="#birthDetails" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Education</a>
+  <a href="#birthDetails" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Family Issues</a>
+  <a href="#birthDetails" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Child Birth</a>
+  <a href="#birthDetails" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">House Muhurtham</a>
+  <a href="#birthDetails" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Health & Wellness</a>
+  <a href="#birthDetails" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Financial Guidance</a>
+</div>
+</section>
+
 <!-- MAIN FORM AND PAYMENT -->
-<section id="mainSection" class="fade max-w-6xl mx-auto px-4 sm:px-8 py-10">
+<section class="fade max-w-6xl mx-auto px-4 sm:px-8 py-10" id="mainSection">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
 <!-- FORM -->
-<div class="bg-white p-8 rounded-2xl shadow-xl">
+<div class="bg-white p-8 rounded-2xl shadow-xl" id="birthDetails">
   <h2 class="text-2xl font-bold text-emerald-700 text-center mb-6">🔮 Birth Details</h2>
   <input type="hidden" id="serviceInput" value="Jathakam / Horoscope">
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -51,7 +67,8 @@
       <option>Female</option>
     </select>
     <input type="date" id="dob" class="p-3 border rounded-lg">
-    <input type="time" id="tob" class="p-3 border rounded-lg">
+    <!-- Birth Time text input -->
+    <input type="text" id="tob" placeholder="Birth Time (e.g. 10:30 AM)" class="p-3 border rounded-lg focus:ring-2 focus:ring-emerald-400">
   </div>
   <input id="place" placeholder="Place of Birth" class="w-full p-3 border rounded-lg mt-4">
   <select id="nakshatram" class="w-full p-3 border rounded-lg mt-4">
@@ -75,16 +92,14 @@
 <div class="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 p-8 rounded-2xl shadow-xl text-center">
   <h3 class="text-xl font-bold text-emerald-700 mb-3">Secure Payment</h3>
   <p class="text-sm text-gray-600 mb-4">One-to-one consultation fee</p>
-
   <button onclick="payNow()" class="w-full bg-emerald-600 text-white py-4 rounded-xl text-lg font-bold hover:bg-emerald-700 transition">
     Pay ₹700 via UPI
   </button>
-
   <p class="mt-4 text-sm text-gray-600">PhonePe • Google Pay • Paytm</p>
   <p class="mt-1 text-xs text-gray-500">UPI ID: <b>jyothishams@ptyes</b></p>
   <p class="mt-4 text-xs text-gray-500">After payment, our team will contact you personally</p>
 
-  <!-- Small Porutham Checker -->
+  <!-- Quick Porutham Checker -->
   <div class="mt-6 bg-white p-4 rounded-lg shadow-sm">
     <h4 class="text-md font-bold text-emerald-700 mb-3">💍 Quick Porutham Checker</h4>
     <div class="grid grid-cols-2 gap-2 mb-3">
@@ -100,21 +115,6 @@
   </div>
 </div>
 
-</div>
-
-<!-- AVAILABLE SERVICES -->
-<div class="mt-16">
-<h2 class="text-4xl font-bold text-center text-emerald-700 mb-10">🔮 Available Consultations</h2>
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-  <a href="#mainSection" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Marriage Prediction</a>
-  <a href="#mainSection" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Career & Job</a>
-  <a href="#mainSection" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Education</a>
-  <a href="#mainSection" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Family Issues</a>
-  <a href="#mainSection" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Child Birth</a>
-  <a href="#mainSection" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">House Muhurtham</a>
-  <a href="#mainSection" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Health & Wellness</a>
-  <a href="#mainSection" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Financial Guidance</a>
-</div>
 </div>
 
 <!-- PEOPLE TRUST -->
@@ -133,8 +133,6 @@
   </div>
 </div>
 
-</section>
-
 <!-- FOOTER -->
 <footer class="bg-white py-6 text-center text-sm shadow-inner">
 📞 <a href="tel:9526522065" class="text-emerald-700 font-semibold">+91 9526 522 065</a><br>
@@ -150,12 +148,12 @@ function payNow() {
   const name = document.getElementById("name").value.trim();
   const phone = document.getElementById("phone").value.trim();
   const dob = document.getElementById("dob").value;
-  const tob = document.getElementById("tob").value;
+  const tob = document.getElementById("tob").value.trim();
   const place = document.getElementById("place").value.trim();
   if (!name || !phone || !dob || !tob || !place) { alert("Please fill all required details"); return; }
   const service = document.getElementById("serviceInput").value;
   const nak = document.getElementById("nakshatram").value || "";
-  const note = encodeURIComponent(service + " - " + name + (nak ? " - " + nak : ""));
+  const note = encodeURIComponent(service + " - " + name + (nak ? " - " + nak : "") + " - " + tob);
   window.location.href = `upi://pay?pa=jyothishams@ptyes&pn=KeralaJyothisham&am=700&cu=INR&tn=${note}`;
 }
 
@@ -165,6 +163,14 @@ function checkPorutham() {
   document.getElementById('poruthamResult').innerText = `Porutham Score: ${score} / 9`;
   alert('Porutham check completed. Score: ' + score + '. Detailed analysis available via consultation.');
 }
+
+// Smooth scroll for clickable services
+document.querySelectorAll('a[href="#birthDetails"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    document.querySelector('#birthDetails').scrollIntoView({ behavior: 'smooth' });
+  });
+});
 </script>
 
 </body>
