@@ -1,64 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ml">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kerala Jyothisham | Marriage Porutham</title>
+
+<title>കേരള ജ്യോതിഷം | വിവാഹ പൊരുത്തം</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-body{font-family:Arial,sans-serif;background:#e8f5e9;margin:0;color:#1b5e20}
-header{background:#2e7d32;color:#fff;padding:20px;text-align:center}
-section{max-width:720px;margin:20px auto;background:#fff;padding:20px;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.1)}
-h2,h3{border-bottom:2px solid #a5d6a7;padding-bottom:5px}
-label{display:block;margin-top:10px;font-weight:bold}
-input,select,button{width:100%;padding:10px;margin-top:5px;border-radius:5px;border:1px solid #a5d6a7}
-button{background:#2e7d32;color:#fff;border:none;cursor:pointer;font-size:16px}
-button:hover{background:#388e3c}
-.result{margin-top:20px;padding:15px;background:#c8e6c9;border-radius:5px;font-weight:bold}
+body{
+  font-family:"Noto Sans Malayalam", Arial, sans-serif;
+  background:linear-gradient(135deg,#e8f5e9,#f1f8e9);
+  margin:0;
+  color:#1b5e20;
+}
+header{
+  background:#1b5e20;
+  color:#fff;
+  padding:18px;
+  text-align:center;
+}
+header h1{margin:0;font-size:28px;}
+header p{margin-top:6px;font-size:14px;color:#c8e6c9;}
+section{
+  max-width:700px;
+  margin:25px auto;
+  background:#fff;
+  padding:22px;
+  border-radius:14px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+h2{text-align:center;color:#2e7d32;}
+h3{
+  font-size:16px;
+  margin-top:22px;
+  border-left:4px solid #66bb6a;
+  padding-left:8px;
+}
+label{display:block;margin-top:10px;font-weight:600;font-size:14px;}
+input,select{
+  width:100%;
+  padding:9px;
+  margin-top:4px;
+  border-radius:6px;
+  border:1px solid #a5d6a7;
+}
+button{
+  margin-top:22px;
+  width:100%;
+  padding:13px;
+  font-size:16px;
+  background:linear-gradient(135deg,#2e7d32,#43a047);
+  color:#fff;
+  border:none;
+  border-radius:9px;
+  cursor:pointer;
+  font-weight:bold;
+}
+.result{
+  margin-top:18px;
+  padding:14px;
+  background:#e8f5e9;
+  border-radius:8px;
+  font-weight:bold;
+  text-align:center;
+}
 </style>
+
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
+
 <body>
+
 <header>
-<h1>Kerala Jyothisham</h1>
-<p>Marriage Porutham Checker</p>
+  <h1>കേരള ജ്യോതിഷം</h1>
+  <p>വിശ്വസനീയമായ വിവാഹ പൊരുത്ത പരിശോധന</p>
 </header>
 
 <section>
-<h2>Enter Groom & Bride Details</h2>
-<form id="poruthamForm">
-<h3>👨 Groom Details</h3>
-<label>Name</label><input type="text" id="boyName" required>
-<label>Date of Birth</label><input type="date" id="boyDOB" required>
-<label>Time of Birth</label><input type="time" id="boyTOB" required>
-<label>Nakshatra</label>
-<select id="boyStar" required>
-<option>Ashwini</option><option>Bharani</option><option>Krittika</option><option>Rohini</option>
-<option>Mrigashira</option><option>Ardra</option><option>Punarvasu</option><option>Pushya</option>
-<option>Ashlesha</option><option>Magha</option><option>Purva Phalguni</option><option>Uttara Phalguni</option>
-<option>Hasta</option><option>Chitra</option><option>Swati</option><option>Vishakha</option>
-<option>Anuradha</option><option>Jyeshtha</option><option>Mula</option><option>Purva Ashadha</option>
-<option>Uttara Ashadha</option><option>Shravana</option><option>Dhanishta</option><option>Shatabhisha</option>
-<option>Purva Bhadrapada</option><option>Uttara Bhadrapada</option><option>Revati</option>
+<h2>വിവാഹ പൊരുത്ത വിശദാംശങ്ങൾ</h2>
+
+<h3>👨 വരൻ</h3>
+<label>പേര്</label>
+<input id="boyName" required>
+
+<label>ജനന തീയതി</label>
+<input type="date" id="boyDOB" required>
+
+<label>ജനന സമയം</label>
+<input type="time" id="boyTOB" required>
+
+<label>നക്ഷത്രം</label>
+<select id="boyStar">
+  <option>Aswathy</option><option>Bharani</option><option>Karithika</option>
+  <option>Rohini</option><option>Magayiram</option><option>thiruvathira</option>
+  <option>Punartham</option><option>Pooyam</option><option>Ayilyam</option>
+  <option>Magham</option><option>Puram</option><option>Uttaram</option>
+  <option>atham</option><option>Chithra</option><option>chothi</option>
+  <option>Vishakham</option><option>Anizham</option><option>thrikketta</option>
+  <option>Mulam</option><option>Puradam</option><option>Uttaram</option>
+  <option>thiruvonam</option><option>avittam</option><option>chathayam</option>
+  <option>Pururutathi</option><option>Uttaratathi</option><option>Revathi</option>
 </select>
 
-<h3>👩 Bride Details</h3>
-<label>Name</label><input type="text" id="girlName" required>
-<label>Date of Birth</label><input type="date" id="girlDOB" required>
-<label>Time of Birth</label><input type="time" id="girlTOB" required>
-<label>Nakshatra</label>
-<select id="girlStar" required>
-<option>Ashwini</option><option>Bharani</option><option>Krittika</option><option>Rohini</option>
-<option>Mrigashira</option><option>Ardra</option><option>Punarvasu</option><option>Pushya</option>
-<option>Ashlesha</option><option>Magha</option><option>Purva Phalguni</option><option>Uttara Phalguni</option>
-<option>Hasta</option><option>Chitra</option><option>Swati</option><option>Vishakha</option>
-<option>Anuradha</option><option>Jyeshtha</option><option>Mula</option><option>Purva Ashadha</option>
-<option>Uttara Ashadha</option><option>Shravana</option><option>Dhanishta</option><option>Shatabhisha</option>
-<option>Purva Bhadrapada</option><option>Uttara Bhadrapada</option><option>Revati</option>
+<h3>👩 വധു</h3>
+<label>പേര്</label>
+<input id="girlName" required>
+
+<label>ജനന തീയതി</label>
+<input type="date" id="girlDOB" required>
+
+<label>ജനന സമയം</label>
+<input type="time" id="girlTOB" required>
+
+<label>നക്ഷത്രം</label>
+<select id="girlStar">
+<option>Aswathy</option><option>Bharani</option><option>Karithika</option>
+  <option>Rohini</option><option>Magayiram</option><option>thiruvathira</option>
+  <option>Punartham</option><option>Pooyam</option><option>Ayilyam</option>
+  <option>Magham</option><option>Puram</option><option>Uttaram</option>
+  <option>atham</option><option>Chithra</option><option>chothi</option>
+  <option>Vishakham</option><option>Anizham</option><option>thrikketta</option>
+  <option>Mulam</option><option>Puradam</option><option>Uttaram</option>
+  <option>thiruvonam</option><option>avittam</option><option>chathayam</option>
+  <option>Pururutathi</option><option>Uttaratathi</option><option>Revathi</option>
 </select>
 
-<button type="button" id="payBtn">Pay ₹10 & Generate PDF</button>
-</form>
+<button id="payBtn">₹10 പണമടച്ച് ഫലം കാണുക</button>
 
 <div class="result" id="result"></div>
 </section>
@@ -66,16 +136,14 @@ button:hover{background:#388e3c}
 <script>
 function formatTime(t){
   const [h,m]=t.split(":");
-  const period=h>=12?"PM":"AM";
-  const hr12=h%12||12;
-  return `${hr12}:${m} ${period}`;
+  return (h%12||12)+":"+m+" "+(h>=12?"PM":"AM");
+}
+function porutham(b,g){
+  return b===g ? "ഉത്തമമായ വിവാഹ പൊരുത്തം ✅" : "സാധാരണ വിവാഹ പൊരുത്തം ⚠️";
 }
 
-function calculatePorutham(boyStar,girlStar){
-  return (boyStar===girlStar)?"Excellent Porutham ✅":"Average Porutham ⚠️";
-}
+document.getElementById("payBtn").onclick = async () => {
 
-document.getElementById("payBtn").onclick=async()=>{
   const boyName=document.getElementById("boyName").value;
   const girlName=document.getElementById("girlName").value;
   const boyStar=document.getElementById("boyStar").value;
@@ -85,9 +153,7 @@ document.getElementById("payBtn").onclick=async()=>{
   const boyTOB=document.getElementById("boyTOB").value;
   const girlTOB=document.getElementById("girlTOB").value;
 
-  // Create Razorpay order
-  const orderRes=await fetch("/create-order",{method:"POST"});
-  const order=await orderRes.json();
+  const order = await (await fetch("/create-order",{method:"POST"})).json();
 
   const options={
     key:"YOUR_RAZORPAY_KEY_ID",
@@ -96,39 +162,37 @@ document.getElementById("payBtn").onclick=async()=>{
     name:"Kerala Jyothisham",
     description:"Marriage Porutham",
     order_id:order.id,
-    handler:async function(response){
-      const verifyRes=await fetch("/verify-payment",{
+
+    method:{ upi:true, card:false, netbanking:false, wallet:false },
+    upi:{ flow:"intent" },   // 🔥 choose ANY UPI app
+
+    handler: async function(response){
+      const verify=await (await fetch("/verify-payment",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify(response)
-      });
-      const verify=await verifyRes.json();
+      })).json();
+
       if(verify.verified){
-        alert("Payment successful! Generating PDF...");
-        const result=calculatePorutham(boyStar,girlStar);
-        document.getElementById("result").innerHTML=`${boyName} & ${girlName}: ${result}`;
+        const res=porutham(boyStar,girlStar);
+        document.getElementById("result").innerHTML =
+          boyName+" & "+girlName+"<br>"+res;
 
         const {jsPDF}=window.jspdf;
         const doc=new jsPDF();
-        doc.setFontSize(18);
-        doc.text("Kerala Jyothisham",105,20,null,null,"center");
-        doc.setFontSize(12);
-        doc.text(`Groom: ${boyName}`,20,40);
-        doc.text(`DOB: ${boyDOB} Time: ${formatTime(boyTOB)}`,20,47);
-        doc.text(`Nakshatra: ${boyStar}`,20,54);
-        doc.text(`Bride: ${girlName}`,20,67);
-        doc.text(`DOB: ${girlDOB} Time: ${formatTime(girlTOB)}`,20,74);
-        doc.text(`Nakshatra: ${girlStar}`,20,81);
-        doc.setTextColor(0,128,0);
-        doc.text(`Porutham Result: ${result}`,20,95);
-        doc.save(`Porutham_${boyName}_${girlName}.pdf`);
-      } else alert("Payment verification failed.");
+        doc.text("കേരള ജ്യോതിഷം",105,20,null,null,"center");
+        doc.text("വരൻ : "+boyName,20,40);
+        doc.text("വധു : "+girlName,20,55);
+        doc.text("ഫലം : "+res,20,75);
+        doc.save("Porutham.pdf");
+      }else alert("Payment Failed");
     },
     theme:{color:"#2e7d32"}
   };
-  const rzp=new Razorpay(options);
-  rzp.open();
+
+  new Razorpay(options).open();
 };
 </script>
+
 </body>
 </html>
