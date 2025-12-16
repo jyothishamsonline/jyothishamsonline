@@ -4,234 +4,176 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>കേരള ജ്യോതിഷം | Trusted Astrology Services</title>
-<meta name="description" content="Accurate astrology, jathakam, marriage prediction & horoscope services. Personal consultation delivered with care.">
-<meta name="keywords" content="Astrology, Jyothisham, Jathakam, Horoscope, Nakshatra">
+
+<meta name="description" content="Accurate astrology, jathakam, marriage prediction & porutham checker">
+
 <script src="https://cdn.tailwindcss.com"></script>
+
+<!-- jsPDF for auto PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 <style>
 body {
   background: radial-gradient(circle at top, #f0fdf4, #ecfeff, #f8fafc);
 }
-.fade { animation: fadeIn 0.9s ease-in-out; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
-<body class="font-sans text-gray-800 w-full">
+
+<body class="font-sans text-gray-800">
 
 <!-- HERO -->
-<section class="bg-gradient-to-r from-emerald-700 via-teal-600 to-cyan-600 text-white py-12 px-4 text-center shadow-lg">
-  <h1 class="text-5xl md:text-6xl font-extrabold mb-4 tracking-wide">🔮 കേരള ജ്യോതിഷം</h1>
-  <p class="text-xl md:text-2xl opacity-95 mb-6">Personal Astrology & Horoscope Consultation</p>
-  <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-    <div class="bg-white/95 text-emerald-700 px-8 py-3 rounded-full font-bold shadow text-lg md:text-xl">₹700 per consultation</div>
-    <div class="text-sm md:text-base bg-black/20 px-6 py-3 rounded-full">100% Personal • Confidential</div>
+<section class="bg-gradient-to-r from-emerald-700 via-teal-600 to-cyan-600 text-white py-12 text-center">
+  <h1 class="text-5xl font-extrabold mb-4">🔮 കേരള ജ്യോതിഷം</h1>
+  <img src="ASTR.jpg" class="mx-auto w-40 rounded-full border-4 border-white shadow mb-4">
+  <p class="text-xl mb-4">Personal Astrology & Horoscope Consultation</p>
+  <div class="flex justify-center gap-4">
+    <span class="bg-white text-emerald-700 px-5 py-2 rounded-full font-bold">₹700 Consultation</span>
+    <span class="bg-black/30 px-5 py-2 rounded-full">100% Confidential</span>
   </div>
 </section>
 
-<!-- TRUST STRIP -->
-<section class="bg-white shadow-sm">
-  <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 text-center text-sm">
-    <div class="bg-emerald-50 p-4 rounded-xl">✔ Genuine Vedic Astrology</div>
-    <div class="bg-teal-50 p-4 rounded-xl">✔ 1-to-1 Consultation</div>
-    <div class="bg-cyan-50 p-4 rounded-xl">✔ No Fear Tactics</div>
-  </div>
-</section>
-
-<!-- AVAILABLE SERVICES -->
-<section class="max-w-6xl mx-auto px-4 sm:px-8 py-12">
-<h2 class="text-4xl font-bold text-center text-emerald-700 mb-10">🔮 Available Consultations</h2>
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-  <a href="#birthDetails" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Marriage Prediction</a>
-  <a href="#birthDetails" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Career & Job</a>
-  <a href="#birthDetails" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Education</a>
-  <a href="#birthDetails" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Family Issues</a>
-  <a href="#birthDetails" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Child Birth</a>
-  <a href="#birthDetails" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">House Muhurtham</a>
-  <a href="#birthDetails" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Health & Wellness</a>
-  <a href="#birthDetails" class="bg-white p-10 rounded-xl shadow text-center text-2xl md:text-3xl hover:bg-emerald-50 transition">Financial Guidance</a>
+<!-- SERVICES -->
+<section class="max-w-6xl mx-auto px-4 py-10">
+<h2 class="text-3xl font-bold text-center text-emerald-700 mb-8">Available Services</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<button onclick="setService('Marriage Prediction')" class="card">Marriage</button>
+<button onclick="setService('Career & Job')" class="card">Career</button>
+<button onclick="setService('Education')" class="card">Education</button>
+<button onclick="setService('Health')" class="card">Health</button>
 </div>
 </section>
 
-<!-- MAIN FORM AND PAYMENT -->
-<section class="fade max-w-6xl mx-auto px-4 sm:px-8 py-10" id="mainSection">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<style>
+.card{
+  background:white;padding:1.5rem;border-radius:1rem;
+  font-weight:600;box-shadow:0 10px 20px rgba(0,0,0,.1)
+}
+.card:hover{background:#ecfdf5}
+</style>
 
-<!-- FORM -->
-<div class="bg-white p-8 rounded-2xl shadow-xl" id="birthDetails">
-  <h2 class="text-2xl font-bold text-emerald-700 text-center mb-6">🔮 Birth Details</h2>
-  <input type="hidden" id="serviceInput" value="Jathakam / Horoscope">
+<!-- MAIN -->
+<section class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-8">
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    <div>
-      <label for="name" class="block font-semibold text-gray-700">Full Name</label>
-      <input id="name" placeholder="Enter full name" class="p-3 border rounded-lg w-full focus:ring-2 focus:ring-emerald-400" required>
-    </div>
-    <div>
-      <label for="gender" class="block font-semibold text-gray-700">Gender</label>
-      <select id="gender" class="p-3 border rounded-lg w-full focus:ring-2 focus:ring-emerald-400" required>
-        <option value="">Select Gender</option>
-        <option>Male</option>
-        <option>Female</option>
-      </select>
-    </div>
-    <div>
-      <label for="dob" class="block font-semibold text-gray-700">Date of Birth</label>
-      <input type="date" id="dob" class="p-3 border rounded-lg w-full" required>
-    </div>
-    <div>
-      <label for="tob" class="block font-semibold text-gray-700">Birth Time (AM/PM)</label>
-      <input type="text" id="tob" placeholder="e.g. 10:30 AM" class="p-3 border rounded-lg w-full focus:ring-2 focus:ring-emerald-400" required>
-    </div>
-  </div>
+<!-- BIRTH FORM -->
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="font-bold text-emerald-700 mb-4">Birth Details</h3>
+<input type="hidden" id="serviceInput" value="Jathakam">
 
-  <div class="mt-4">
-    <label for="place" class="block font-semibold text-gray-700">Place of Birth</label>
-    <input id="place" placeholder="Enter place of birth" class="w-full p-3 border rounded-lg" required>
-  </div>
+<input id="name" placeholder="Full Name" class="w-full p-3 border rounded mb-3">
+<input type="date" id="dob" class="w-full p-3 border rounded mb-3">
+<input id="tob" placeholder="Birth Time (10:30 AM)" class="w-full p-3 border rounded mb-3">
+<input id="place" placeholder="Place of Birth" class="w-full p-3 border rounded mb-3">
+<input id="phone" placeholder="WhatsApp Number" class="w-full p-3 border rounded mb-3">
 
-  <div class="mt-4">
-    <label for="nakshatram" class="block font-semibold text-gray-700">Nakshatram (if known)</label>
-    <select id="nakshatram" class="w-full p-3 border rounded-lg">
-      <option value="">Select Nakshatram</option>
-      <option>Aswathi</option><option>Bharani</option><option>Karthika</option>
-      <option>Rohini</option><option>Makayiram</option><option>Thiruvathira</option>
-      <option>Punartham</option><option>Pooyam</option><option>Ayilyam</option>
-      <option>Magha</option><option>Puram</option><option>Uttaram</option>
-      <option>Atham</option><option>Chithra</option><option>Chothi</option>
-      <option>Vishakham</option><option>Anizam</option><option>Thriketta</option>
-      <option>Mulam</option><option>Puradam</option><option>Uttardam</option>
-      <option>Thiruvonam</option><option>Avittam</option><option>Chathayam</option>
-      <option>Pururuttathi</option><option>Uttaritathi</option><option>Revathi</option>
-    </select>
-  </div>
-
-  <div class="mt-4">
-    <label for="phone" class="block font-semibold text-gray-700">WhatsApp Number</label>
-    <input id="phone" placeholder="Enter WhatsApp number" pattern="[6-9][0-9]{9}" maxlength="10" class="w-full p-3 border rounded-lg" required>
-  </div>
-
-  <div class="mt-4">
-    <label for="comments" class="block font-semibold text-gray-700">Your Questions (Optional)</label>
-    <textarea id="comments" placeholder="Any questions you want answered" class="w-full p-3 border rounded-lg"></textarea>
-  </div>
-
-  <p class="text-xs text-center text-gray-500 mt-3">Your details are kept strictly confidential</p>
+<button onclick="payMain()" class="w-full bg-emerald-600 text-white py-3 rounded font-bold">
+Pay ₹700 via UPI
+</button>
 </div>
 
-<!-- PAYMENT + PORUTHAM CHECKER -->
-<div class="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 p-8 rounded-2xl shadow-xl text-center">
-  <h3 class="text-xl font-bold text-emerald-700 mb-3">Secure Payment</h3>
-  <p class="text-sm text-gray-600 mb-4">One-to-one consultation fee</p>
-  <button onclick="payNow()" class="w-full bg-emerald-600 text-white py-4 rounded-xl text-lg font-bold hover:bg-emerald-700 transition">
-    Pay ₹700 via UPI
-  </button>
-  <p class="mt-4 text-sm text-gray-600">PhonePe • Google Pay • Paytm</p>
-  <p class="mt-1 text-xs text-gray-500">UPI ID: <b>jyothishams@ptyes</b></p>
-  <p class="mt-4 text-xs text-gray-500">After payment, our team will contact you personally</p>
+<!-- PORUTHAM -->
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="font-bold text-emerald-700 mb-4">💍 Paid Porutham Checker – ₹10</h3>
 
-  <!-- Quick Porutham Checker -->
-  <div class="mt-6 bg-white p-4 rounded-lg shadow-sm">
-    <h4 class="text-md font-bold text-emerald-700 mb-3">💍 Quick Porutham Checker</h4>
-    <div class="grid grid-cols-2 gap-2 mb-3">
-      <input id="brideName" placeholder="Bride Name" class="p-2 border rounded">
-      <input type="date" id="brideDOB" class="p-2 border rounded">
-    </div>
-    <div class="grid grid-cols-2 gap-2 mb-3">
-      <input id="groomName" placeholder="Groom Name" class="p-2 border rounded">
-      <input type="date" id="groomDOB" class="p-2 border rounded">
-    </div>
-    <button onclick="checkPorutham()" class="w-full bg-emerald-600 text-white py-2 rounded font-bold hover:bg-emerald-700">Check Porutham</button>
-    <p id="poruthamResult" class="text-center font-bold text-green-700 mt-2 whitespace-pre-line"></p>
-  </div>
+<input id="girlName" placeholder="Girl Name" class="w-full p-2 border rounded mb-2">
+<input type="date" id="girlDOB" class="w-full p-2 border rounded mb-2">
+<input type="time" id="girlTime" class="w-full p-2 border rounded mb-2">
+
+<input id="boyName" placeholder="Boy Name" class="w-full p-2 border rounded mb-2">
+<input type="date" id="boyDOB" class="w-full p-2 border rounded mb-2">
+<input type="time" id="boyTime" class="w-full p-2 border rounded mb-3">
+
+<button onclick="payPorutham()" class="w-full bg-emerald-600 text-white py-2 rounded font-bold">
+Check Porutham – ₹10
+</button>
+
+<pre id="poruthamResult" class="mt-3 font-bold text-green-700 whitespace-pre-line"></pre>
 </div>
 
-</div>
-
-<!-- PEOPLE TRUST -->
-<div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
-  <div class="bg-white p-6 rounded-xl shadow">
-    <p class="font-bold text-emerald-700">Real Guidance</p>
-    <p class="text-sm text-gray-600 mt-2">Practical solutions based on your birth chart, not superstition.</p>
-  </div>
-  <div class="bg-white p-6 rounded-xl shadow">
-    <p class="font-bold text-emerald-700">Experienced Approach</p>
-    <p class="text-sm text-gray-600 mt-2">Years of study in traditional Vedic astrology methods.</p>
-  </div>
-  <div class="bg-white p-6 rounded-xl shadow">
-    <p class="font-bold text-emerald-700">Respect & Privacy</p>
-    <p class="text-sm text-gray-600 mt-2">Your life matters are handled with full confidentiality.</p>
-  </div>
-</div>
+</section>
 
 <!-- FOOTER -->
-<footer class="bg-white py-6 text-center text-sm shadow-inner">
-📞 <a href="tel:9526522065" class="text-emerald-700 font-semibold">+91 9526 522 065</a><br>
+<footer class="bg-white py-6 text-center text-sm">
+📞 <a href="tel:9526522065" class="text-emerald-700 font-bold">+91 9526 522 065</a><br>
 ✉️ jyothishamsonline@gmail.com<br>
-© കേരള ജ്യോതിഷം
+© Kerala Jyothisham
 </footer>
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/919526522065" class="fixed bottom-5 right-5 bg-emerald-600 text-white p-4 rounded-full shadow-xl text-xl">💬</a>
+<a href="https://wa.me/919526522065"
+class="fixed bottom-5 right-5 bg-emerald-600 text-white p-4 rounded-full text-xl">💬</a>
 
 <script>
-// PAYMENT FUNCTION
-function payNow() {
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const dob = document.getElementById("dob").value;
-  const tob = document.getElementById("tob").value.trim();
-  const place = document.getElementById("place").value.trim();
+// SERVICE
+function setService(s){ document.getElementById("serviceInput").value=s }
 
-  if (!name || !phone || !dob || !tob || !place) { 
-    alert("Please fill all required details"); 
-    return; 
-  }
-
-  const service = document.getElementById("serviceInput").value;
-  const nak = document.getElementById("nakshatram").value || "";
-  const note = encodeURIComponent(
-    service + " - " + name + (nak ? " - " + nak : "") + 
-    " - DOB: " + dob + " - TOB: " + tob + " - Place: " + place
-  );
-
-  if(confirm("You are about to pay ₹700 for " + service + ". Proceed?")) {
-    window.location.href = `upi://pay?pa=jyothishams@ptyes&pn=KeralaJyothisham&am=700&cu=INR&tn=${note}`;
-  }
+// MAIN PAYMENT
+function payMain(){
+  if(!name.value||!dob.value||!tob.value||!place.value){alert("Fill all details");return;}
+  window.location.href="upi://pay?pa=jyothishams@ptyes&pn=KeralaJyothisham&am=700&cu=INR";
 }
 
-// QUICK PORUTHAM CHECKER
-function checkPorutham() {
-  const brideName = document.getElementById("brideName").value.trim();
-  const groomName = document.getElementById("groomName").value.trim();
-  const brideDOB = document.getElementById("brideDOB").value;
-  const groomDOB = document.getElementById("groomDOB").value;
-
-  if(!brideName || !groomName || !brideDOB || !groomDOB) {
-    alert("Please fill all bride and groom details to check porutham.");
-    return;
+// PORUTHAM PAYMENT
+function payPorutham(){
+  if(!girlName.value||!boyName.value||!girlDOB.value||!boyDOB.value||!girlTime.value||!boyTime.value){
+    alert("Fill all porutham details"); return;
   }
-
-  const score = Math.floor(Math.random() * 7) + 3; // 3-9
-  let resultText = `Porutham Score: ${score} / 9\n\n`;
-
-  if(score <= 4) {
-    resultText += "⚠️ Low compatibility.\nConsultation recommended for detailed analysis.";
-  } else if(score <= 7) {
-    resultText += "✅ Moderate compatibility.\nDetailed consultation will provide guidance.";
-  } else {
-    resultText += "🌟 High compatibility.\nStill, detailed analysis is advised for auspicious planning.";
-  }
-
-  document.getElementById('poruthamResult').innerText = resultText;
-  alert("Porutham check completed. See details below the button.");
+  window.location.href="upi://pay?pa=jyothishams@ptyes&pn=KeralaJyothisham&am=10&cu=INR";
+  setTimeout(calculatePorutham,2500);
 }
 
-// Smooth scroll
-document.querySelectorAll('a[href="#birthDetails"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    document.querySelector('#birthDetails').scrollIntoView({ behavior: 'smooth' });
-  });
-});
+// PORUTHAM ALGORITHM + PDF
+function calculatePorutham(){
+
+  const nak = [
+    "Aswathi","Bharani","Karthika","Rohini","Makayiram","Thiruvathira",
+    "Punartham","Pooyam","Ayilyam","Magha","Puram","Uttaram",
+    "Atham","Chithra","Chothi","Vishakham","Anizham","Thrikketta",
+    "Mulam","Pooradam","Uthradam","Thiruvonam","Avittam","Chathayam",
+    "Pururuttathi","Uthrittathi","Revathi"
+  ];
+
+  const gNak = Math.floor(new Date(`${girlDOB.value}T${girlTime.value}`).getTime()/60000)%27;
+  const bNak = Math.floor(new Date(`${boyDOB.value}T${boyTime.value}`).getTime()/60000)%27;
+  const diff = (bNak-gNak+27)%27;
+
+  let score=0;
+  if(diff>=7)score++;
+  if(diff%9!==0)score++;
+  if(bNak>gNak)score++;
+  if(gNak!==bNak)score++;
+
+  const verdict = score>=3 ? "GOOD MATCH – Marriage Recommended" : "AVERAGE MATCH – Consultation Needed";
+
+  const text =
+`Girl Nakshatra : ${nak[gNak]}
+Boy Nakshatra  : ${nak[bNak]}
+Porutham Score : ${score}/4
+Result : ${verdict}`;
+
+  poruthamResult.innerText=text;
+
+  generatePDF(score,verdict,nak[gNak],nak[bNak]);
+}
+
+function generatePDF(score,verdict,gNak,bNak){
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.text("KERALA JYOTHISHAM",105,20,{align:"center"});
+  doc.text("Paid Porutham Report",105,30,{align:"center"});
+
+  doc.text(`Girl : ${girlName.value}`,20,50);
+  doc.text(`Nakshatra : ${gNak}`,20,58);
+
+  doc.text(`Boy : ${boyName.value}`,20,70);
+  doc.text(`Nakshatra : ${bNak}`,20,78);
+
+  doc.text(`Score : ${score}/4`,20,95);
+  doc.text(`Result : ${verdict}`,20,105);
+
+  doc.text("Disclaimer: Automated report. Full horoscope matching advised.",20,130);
+
+  doc.save(`Porutham_${girlName.value}_${boyName.value}.pdf`);
+}
 </script>
 
 </body>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kerala Jyothisham | Marriage Porutham</title>
+<style>
+body{font-family:Arial,sans-serif;background:#e8f5e9;margin:0;color:#1b5e20}
+header{background:#2e7d32;color:#fff;padding:20px;text-align:center}
+section{max-width:720px;margin:20px auto;background:#fff;padding:20px;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.1)}
+h2,h3{border-bottom:2px solid #a5d6a7;padding-bottom:5px}
+label{display:block;margin-top:10px;font-weight:bold}
+input,select,button{width:100%;padding:10px;margin-top:5px;border-radius:5px;border:1px solid #a5d6a7}
+button{background:#2e7d32;color:#fff;border:none;cursor:pointer;font-size:16px}
+button:hover{background:#388e3c}
+.result{margin-top:20px;padding:15px;background:#c8e6c9;border-radius:5px;font-weight:bold}
+</style>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+<header>
+<h1>Kerala Jyothisham</h1>
+<p>Marriage Porutham Checker</p>
+</header>
+
+<section>
+<h2>Enter Groom & Bride Details</h2>
+<form id="poruthamForm">
+<h3>👨 Groom Details</h3>
+<label>Name</label><input type="text" id="boyName" required>
+<label>Date of Birth</label><input type="date" id="boyDOB" required>
+<label>Time of Birth</label><input type="time" id="boyTOB" required>
+<label>Nakshatra</label>
+<select id="boyStar" required>
+<option>Ashwini</option><option>Bharani</option><option>Krittika</option><option>Rohini</option>
+<option>Mrigashira</option><option>Ardra</option><option>Punarvasu</option><option>Pushya</option>
+<option>Ashlesha</option><option>Magha</option><option>Purva Phalguni</option><option>Uttara Phalguni</option>
+<option>Hasta</option><option>Chitra</option><option>Swati</option><option>Vishakha</option>
+<option>Anuradha</option><option>Jyeshtha</option><option>Mula</option><option>Purva Ashadha</option>
+<option>Uttara Ashadha</option><option>Shravana</option><option>Dhanishta</option><option>Shatabhisha</option>
+<option>Purva Bhadrapada</option><option>Uttara Bhadrapada</option><option>Revati</option>
+</select>
+
+<h3>👩 Bride Details</h3>
+<label>Name</label><input type="text" id="girlName" required>
+<label>Date of Birth</label><input type="date" id="girlDOB" required>
+<label>Time of Birth</label><input type="time" id="girlTOB" required>
+<label>Nakshatra</label>
+<select id="girlStar" required>
+<option>Ashwini</option><option>Bharani</option><option>Krittika</option><option>Rohini</option>
+<option>Mrigashira</option><option>Ardra</option><option>Punarvasu</option><option>Pushya</option>
+<option>Ashlesha</option><option>Magha</option><option>Purva Phalguni</option><option>Uttara Phalguni</option>
+<option>Hasta</option><option>Chitra</option><option>Swati</option><option>Vishakha</option>
+<option>Anuradha</option><option>Jyeshtha</option><option>Mula</option><option>Purva Ashadha</option>
+<option>Uttara Ashadha</option><option>Shravana</option><option>Dhanishta</option><option>Shatabhisha</option>
+<option>Purva Bhadrapada</option><option>Uttara Bhadrapada</option><option>Revati</option>
+</select>
+
+<button type="button" id="payBtn">Pay ₹10 & Generate PDF</button>
+</form>
+
+<div class="result" id="result"></div>
+</section>
+
+<script>
+function formatTime(t){
+  const [h,m]=t.split(":");
+  const period=h>=12?"PM":"AM";
+  const hr12=h%12||12;
+  return `${hr12}:${m} ${period}`;
+}
+
+function calculatePorutham(boyStar,girlStar){
+  return (boyStar===girlStar)?"Excellent Porutham ✅":"Average Porutham ⚠️";
+}
+
+document.getElementById("payBtn").onclick=async()=>{
+  const boyName=document.getElementById("boyName").value;
+  const girlName=document.getElementById("girlName").value;
+  const boyStar=document.getElementById("boyStar").value;
+  const girlStar=document.getElementById("girlStar").value;
+  const boyDOB=document.getElementById("boyDOB").value;
+  const girlDOB=document.getElementById("girlDOB").value;
+  const boyTOB=document.getElementById("boyTOB").value;
+  const girlTOB=document.getElementById("girlTOB").value;
+
+  // Create Razorpay order
+  const orderRes=await fetch("/create-order",{method:"POST"});
+  const order=await orderRes.json();
+
+  const options={
+    key:"YOUR_RAZORPAY_KEY_ID",
+    amount:order.amount,
+    currency:"INR",
+    name:"Kerala Jyothisham",
+    description:"Marriage Porutham",
+    order_id:order.id,
+    handler:async function(response){
+      const verifyRes=await fetch("/verify-payment",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(response)
+      });
+      const verify=await verifyRes.json();
+      if(verify.verified){
+        alert("Payment successful! Generating PDF...");
+        const result=calculatePorutham(boyStar,girlStar);
+        document.getElementById("result").innerHTML=`${boyName} & ${girlName}: ${result}`;
+
+        const {jsPDF}=window.jspdf;
+        const doc=new jsPDF();
+        doc.setFontSize(18);
+        doc.text("Kerala Jyothisham",105,20,null,null,"center");
+        doc.setFontSize(12);
+        doc.text(`Groom: ${boyName}`,20,40);
+        doc.text(`DOB: ${boyDOB} Time: ${formatTime(boyTOB)}`,20,47);
+        doc.text(`Nakshatra: ${boyStar}`,20,54);
+        doc.text(`Bride: ${girlName}`,20,67);
+        doc.text(`DOB: ${girlDOB} Time: ${formatTime(girlTOB)}`,20,74);
+        doc.text(`Nakshatra: ${girlStar}`,20,81);
+        doc.setTextColor(0,128,0);
+        doc.text(`Porutham Result: ${result}`,20,95);
+        doc.save(`Porutham_${boyName}_${girlName}.pdf`);
+      } else alert("Payment verification failed.");
+    },
+    theme:{color:"#2e7d32"}
+  };
+  const rzp=new Razorpay(options);
+  rzp.open();
+};
+</script>
+</body>
+</html>
