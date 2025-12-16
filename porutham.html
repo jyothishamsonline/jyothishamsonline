@@ -46,18 +46,6 @@ input,select{
   border-radius:6px;
   border:1px solid #a5d6a7;
 }
-button{
-  margin-top:22px;
-  width:100%;
-  padding:13px;
-  font-size:16px;
-  background:linear-gradient(135deg,#2e7d32,#43a047);
-  color:#fff;
-  border:none;
-  border-radius:9px;
-  cursor:pointer;
-  font-weight:bold;
-}
 .result{
   margin-top:18px;
   padding:14px;
@@ -84,114 +72,123 @@ button{
 
 <h3>👨 വരൻ</h3>
 <label>പേര്</label>
-<input id="boyName" required>
+<input id="boyName">
 
 <label>ജനന തീയതി</label>
-<input type="date" id="boyDOB" required>
+<input type="date" id="boyDOB">
 
 <label>ജനന സമയം</label>
-<input type="time" id="boyTOB" required>
+<input type="time" id="boyTOB">
 
 <label>നക്ഷത്രം</label>
 <select id="boyStar">
+  <option value="">-- തിരഞ്ഞെടുക്കുക --</option>
   <option>Aswathy</option><option>Bharani</option><option>Karithika</option>
-  <option>Rohini</option><option>Magayiram</option><option>thiruvathira</option>
+  <option>Rohini</option><option>Makayiram</option><option>Thiruvathira</option>
   <option>Punartham</option><option>Pooyam</option><option>Ayilyam</option>
   <option>Magham</option><option>Puram</option><option>Uttaram</option>
-  <option>atham</option><option>Chithra</option><option>chothi</option>
-  <option>Vishakham</option><option>Anizham</option><option>thrikketta</option>
-  <option>Mulam</option><option>Puradam</option><option>Uttaram</option>
-  <option>thiruvonam</option><option>avittam</option><option>chathayam</option>
-  <option>Pururutathi</option><option>Uttaratathi</option><option>Revathi</option>
+  <option>Atham</option><option>Chithra</option><option>Chothi</option>
+  <option>Vishakham</option><option>Anizham</option><option>Thrikketta</option>
+  <option>Mulam</option><option>Puradam</option><option>Uthradam</option>
+  <option>Thiruvonam</option><option>Avittam</option><option>Chathayam</option>
+  <option>Pururuttathi</option><option>Uthratathi</option><option>Revathi</option>
 </select>
 
 <h3>👩 വധു</h3>
 <label>പേര്</label>
-<input id="girlName" required>
+<input id="girlName">
 
 <label>ജനന തീയതി</label>
-<input type="date" id="girlDOB" required>
+<input type="date" id="girlDOB">
 
 <label>ജനന സമയം</label>
-<input type="time" id="girlTOB" required>
+<input type="time" id="girlTOB">
 
 <label>നക്ഷത്രം</label>
 <select id="girlStar">
-<option>Aswathy</option><option>Bharani</option><option>Karithika</option>
-  <option>Rohini</option><option>Magayiram</option><option>thiruvathira</option>
+  <option value="">-- തിരഞ്ഞെടുക്കുക --</option>
+  <option>Aswathy</option><option>Bharani</option><option>Karithika</option>
+  <option>Rohini</option><option>Makayiram</option><option>Thiruvathira</option>
   <option>Punartham</option><option>Pooyam</option><option>Ayilyam</option>
   <option>Magham</option><option>Puram</option><option>Uttaram</option>
-  <option>atham</option><option>Chithra</option><option>chothi</option>
-  <option>Vishakham</option><option>Anizham</option><option>thrikketta</option>
-  <option>Mulam</option><option>Puradam</option><option>Uttaram</option>
-  <option>thiruvonam</option><option>avittam</option><option>chathayam</option>
-  <option>Pururutathi</option><option>Uttaratathi</option><option>Revathi</option>
+  <option>Atham</option><option>Chithra</option><option>Chothi</option>
+  <option>Vishakham</option><option>Anizham</option><option>Thrikketta</option>
+  <option>Mulam</option><option>Puradam</option><option>Uthradam</option>
+  <option>Thiruvonam</option><option>Avittam</option><option>Chathayam</option>
+  <option>Pururuttathi</option><option>Uthratathi</option><option>Revathi</option>
 </select>
 
-<button id="payBtn">₹10 പണമടച്ച് ഫലം കാണുക</button>
+<div class="result" id="result">എല്ലാ വിവരങ്ങളും നൽകുക – ₹10 പേയ്‌മെന്റ് ഓട്ടോ തുറക്കും</div>
 
-<div class="result" id="result"></div>
 </section>
 
 <script>
-function formatTime(t){
-  const [h,m]=t.split(":");
-  return (h%12||12)+":"+m+" "+(h>=12?"PM":"AM");
-}
 function porutham(b,g){
   return b===g ? "ഉത്തമമായ വിവാഹ പൊരുത്തം ✅" : "സാധാരണ വിവാഹ പൊരുത്തം ⚠️";
 }
 
-document.getElementById("payBtn").onclick = async () => {
+function allFilled(){
+  return boyName.value && girlName.value &&
+         boyDOB.value && girlDOB.value &&
+         boyTOB.value && girlTOB.value &&
+         boyStar.value && girlStar.value;
+}
 
-  const boyName=document.getElementById("boyName").value;
-  const girlName=document.getElementById("girlName").value;
-  const boyStar=document.getElementById("boyStar").value;
-  const girlStar=document.getElementById("girlStar").value;
-  const boyDOB=document.getElementById("boyDOB").value;
-  const girlDOB=document.getElementById("girlDOB").value;
-  const boyTOB=document.getElementById("boyTOB").value;
-  const girlTOB=document.getElementById("girlTOB").value;
+async function startPayment(){
 
+  // 🔴 BACKEND REQUIRED
   const order = await (await fetch("/create-order",{method:"POST"})).json();
 
-  const options={
-    key:"YOUR_RAZORPAY_KEY_ID",
-    amount:order.amount,
-    currency:"INR",
-    name:"Kerala Jyothisham",
-    description:"Marriage Porutham",
-    order_id:order.id,
+  const options = {
+    key: "YOUR_RAZORPAY_KEY_ID",
+    amount: order.amount,
+    currency: "INR",
+    name: "Kerala Jyothisham",
+    description: "Marriage Porutham",
+    order_id: order.id,
 
-    method:{ upi:true, card:false, netbanking:false, wallet:false },
-    upi:{ flow:"intent" },   // 🔥 choose ANY UPI app
+    method:{ upi:true },
+    upi:{
+      flow:"intent",
+      intents:["google_pay","phonepe","paytm"]
+    },
 
-    handler: async function(response){
-      const verify=await (await fetch("/verify-payment",{
+    handler: async function (response) {
+
+      const verify = await (await fetch("/verify-payment",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify(response)
       })).json();
 
       if(verify.verified){
-        const res=porutham(boyStar,girlStar);
-        document.getElementById("result").innerHTML =
-          boyName+" & "+girlName+"<br>"+res;
 
-        const {jsPDF}=window.jspdf;
-        const doc=new jsPDF();
+        const res = porutham(boyStar.value, girlStar.value);
+        result.innerHTML = boyName.value+" & "+girlName.value+"<br>"+res;
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
         doc.text("കേരള ജ്യോതിഷം",105,20,null,null,"center");
-        doc.text("വരൻ : "+boyName,20,40);
-        doc.text("വധു : "+girlName,20,55);
+        doc.text("വരൻ : "+boyName.value,20,40);
+        doc.text("വധു : "+girlName.value,20,55);
         doc.text("ഫലം : "+res,20,75);
         doc.save("Porutham.pdf");
-      }else alert("Payment Failed");
+      } else {
+        alert("Payment Failed");
+      }
     },
     theme:{color:"#2e7d32"}
   };
 
   new Razorpay(options).open();
-};
+}
+
+// 🔥 AUTO PAYMENT TRIGGER
+girlStar.addEventListener("change",()=>{
+  if(allFilled()){
+    startPayment();
+  }
+});
 </script>
 
 </body>
