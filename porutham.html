@@ -1,193 +1,210 @@
 <!DOCTYPE html>
-<html lang="ml">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>കേരള ജ്യോതിഷം | വിവാഹ പൊരുത്തം</title>
-
+<title>Kerala Jyothisham | Marriage Porutham & Navaratnam</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-body{
-  font-family:"Noto Sans Malayalam", Arial, sans-serif;
-  background:linear-gradient(135deg,#e8f5e9,#f1f8e9);
-  margin:0;
-  color:#1b5e20;
-}
-header{
-  background:#1b5e20;
-  color:#fff;
-  padding:18px;
-  text-align:center;
-}
-header h1{margin:0;font-size:28px;}
-header p{margin-top:6px;font-size:14px;color:#c8e6c9;}
-section{
-  max-width:700px;
-  margin:25px auto;
-  background:#fff;
-  padding:22px;
-  border-radius:14px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.1);
-}
-h2{text-align:center;color:#2e7d32;}
-h3{
-  font-size:16px;
-  margin-top:22px;
-  border-left:4px solid #66bb6a;
-  padding-left:8px;
-}
-label{display:block;margin-top:10px;font-weight:600;font-size:14px;}
-input,select{
-  width:100%;
-  padding:9px;
-  margin-top:4px;
-  border-radius:6px;
-  border:1px solid #a5d6a7;
-}
-.result{
-  margin-top:18px;
-  padding:14px;
-  background:#e8f5e9;
-  border-radius:8px;
-  font-weight:bold;
-  text-align:center;
-}
-</style>
-
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+body{margin:0;font-family:"Noto Sans Malayalam",sans-serif;background:#f4fbf6;color:#1b3a2b;}
+header{background:linear-gradient(90deg,#ff9800,#f57c00);color:#fff;padding:18px;text-align:center;}
+header h1{margin:0;font-size:28px;}
+header p{margin-top:6px;font-size:14px;}
+.container{max-width:1200px;margin:auto;padding:20px;display:flex;gap:20px;flex-wrap:wrap;}
+.card{flex:1;background:#fff;padding:20px;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,0.08);min-width:300px;}
+h2{color:#0f5c3a;margin-bottom:12px;}
+label{display:block;margin-top:10px;font-size:13px;}
+input,textarea{width:100%;padding:8px;margin-top:4px;border-radius:6px;border:1px solid #b7d8c6;}
+button{margin-top:10px;width:100%;padding:10px;font-size:14px;background:#198754;color:#fff;border:none;border-radius:8px;cursor:pointer;}
+button:hover{background:#146c43;}
+.small{font-size:12px;color:#2e7d32;margin-top:6px;}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px;}
+.product{border:1px solid #cde5d6;border-radius:10px;padding:10px;text-align:center;background:#f9fff9;}
+.product img{width:100%;height:70px;object-fit:contain;margin-top:6px;}
+.popup{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;z-index:100;}
+.popup-content{background:#fff;padding:20px;border-radius:12px;width:90%;max-width:400px;}
+.trust-section{margin-top:30px;background:#e8f5e9;padding:20px;border-radius:12px;text-align:center;}
+.trust-section h3{color:#0f5c3a;margin-bottom:12px;}
+.trust-item{display:inline-block;margin:10px;padding:10px;min-width:120px;}
+@media(max-width:900px){.container{flex-direction:column;}}
+#result{margin-top:15px;padding:14px;background:#e8f5e9;border-radius:10px;display:none;}
+</style>
 </head>
-
 <body>
 
 <header>
-  <h1>കേരള ജ്യോതിഷം</h1>
-  <p>വിശ്വസനീയമായ വിവാഹ പൊരുത്ത പരിശോധന</p>
+<h1>🕉️ Kerala Jyothisham</h1>
+<p>Marriage Porutham & Navaratnam Services</p>
 </header>
 
-<section>
-<h2>വിവാഹ പൊരുത്ത വിശദാംശങ്ങൾ</h2>
+<div class="container">
+<!-- LEFT: Marriage Porutham -->
+<div class="card">
+<h2>Marriage Porutham (₹10)</h2>
+<label>Boy Name *</label><input id="bName">
+<label>Boy DOB *</label><input type="date" id="bDob">
+<label>Boy Star *</label><input id="bStar">
+<label>Girl Name *</label><input id="gName">
+<label>Girl DOB *</label><input type="date" id="gDob">
+<label>Girl Star *</label><input id="gStar">
+<button id="payPoruthamBtn">Submit & Pay ₹10</button>
+<p class="small">🔒 Secure UPI • GPay • PhonePe • Paytm</p>
+<div id="result"></div>
+</div>
 
-<h3>👨 വരൻ</h3>
-<label>പേര്</label>
-<input id="boyName">
+<!-- RIGHT: Navaratnam -->
+<div class="card">
+<h2>Navaratnam Order (₹4500 each)</h2>
+<div class="grid" id="productGrid">
+<!-- Each product with its own button -->
+<div class="product" data-name="Diamond">
+💎 Diamond<img src="diamond.jpg"><br>
+<button class="navBtn">Select & Pay ₹4500</button>
+</div>
+<div class="product" data-name="Ruby">
+🔴 Ruby<img src="ruby.jpg"><br>
+<button class="navBtn">Select & Pay ₹4500</button>
+</div>
+<div class="product" data-name="Pearl">
+🤍 Pearl<img src="pearl.jpg"><br>
+<button class="navBtn">Select & Pay ₹4500</button>
+</div>
+<div class="product" data-name="Emerald">
+🟢 Emerald<img src="emerald.jpg"><br>
+<button class="navBtn">Select & Pay ₹4500</button>
+</div>
+<div class="product" data-name="Yellow Sapphire">
+🟡 Yellow Sapphire<img src="ysap.jpg"><br>
+<button class="navBtn">Select & Pay ₹4500</button>
+</div>
+<div class="product" data-name="Blue Sapphire">
+🔵 Blue Sapphire<img src="bsap.jpg"><br>
+<button class="navBtn">Select & Pay ₹4500</button>
+</div>
+<div class="product" data-name="Hessonite">
+🟤 Hessonite<img src="gomed.jpg"><br>
+<button class="navBtn">Select & Pay ₹4500</button>
+</div>
+<div class="product" data-name="Cat’s Eye">
+👁️ Cat’s Eye<img src="cateye.jpg"><br>
+<button class="navBtn">Select & Pay ₹4500</button>
+</div>
+<div class="product" data-name="Coral">
+🔴 Coral<img src="coral.jpg"><br>
+<button class="navBtn">Select & Pay ₹4500</button>
+</div>
+</div>
+</div>
+</div>
 
-<label>ജനന തീയതി</label>
-<input type="date" id="boyDOB">
+<!-- POPUP FORM FOR NAVARATNAM -->
+<div class="popup" id="detailPopup">
+<div class="popup-content">
+<h3>Enter Your Details & Delivery Address</h3>
+<label>Name *</label><input id="custName">
+<label>DOB *</label><input type="date" id="custDob">
+<label>Star *</label><input id="custStar">
+<label>Mobile Number *</label><input id="custPhone">
+<label>Delivery Address *</label><textarea id="custAddr" placeholder="Street, City, State"></textarea>
+<label>Pincode *</label><input id="custPin">
+<button id="payBtn">Pay ₹4500</button>
+</div>
+</div>
 
-<label>ജനന സമയം</label>
-<input type="time" id="boyTOB">
-
-<label>നക്ഷത്രം</label>
-<select id="boyStar">
-  <option value="">-- തിരഞ്ഞെടുക്കുക --</option>
-  <option>Aswathy</option><option>Bharani</option><option>Karithika</option>
-  <option>Rohini</option><option>Makayiram</option><option>Thiruvathira</option>
-  <option>Punartham</option><option>Pooyam</option><option>Ayilyam</option>
-  <option>Magham</option><option>Puram</option><option>Uttaram</option>
-  <option>Atham</option><option>Chithra</option><option>Chothi</option>
-  <option>Vishakham</option><option>Anizham</option><option>Thrikketta</option>
-  <option>Mulam</option><option>Puradam</option><option>Uthradam</option>
-  <option>Thiruvonam</option><option>Avittam</option><option>Chathayam</option>
-  <option>Pururuttathi</option><option>Uthratathi</option><option>Revathi</option>
-</select>
-
-<h3>👩 വധു</h3>
-<label>പേര്</label>
-<input id="girlName">
-
-<label>ജനന തീയതി</label>
-<input type="date" id="girlDOB">
-
-<label>ജനന സമയം</label>
-<input type="time" id="girlTOB">
-
-<label>നക്ഷത്രം</label>
-<select id="girlStar">
-  <option value="">-- തിരഞ്ഞെടുക്കുക --</option>
-  <option>Aswathy</option><option>Bharani</option><option>Karithika</option>
-  <option>Rohini</option><option>Makayiram</option><option>Thiruvathira</option>
-  <option>Punartham</option><option>Pooyam</option><option>Ayilyam</option>
-  <option>Magham</option><option>Puram</option><option>Uttaram</option>
-  <option>Atham</option><option>Chithra</option><option>Chothi</option>
-  <option>Vishakham</option><option>Anizham</option><option>Thrikketta</option>
-  <option>Mulam</option><option>Puradam</option><option>Uthradam</option>
-  <option>Thiruvonam</option><option>Avittam</option><option>Chathayam</option>
-  <option>Pururuttathi</option><option>Uthratathi</option><option>Revathi</option>
-</select>
-
-<div class="result" id="result">എല്ലാ വിവരങ്ങളും നൽകുക – ₹10 പേയ്‌മെന്റ് ഓട്ടോ തുറക്കും</div>
-
-</section>
+<!-- TRUST SECTION -->
+<div class="trust-section">
+<h3>Why Choose Us?</h3>
+<div class="trust-item">🔒 Secure Payments</div>
+<div class="trust-item">🕉️ Temple Energized Products</div>
+<div class="trust-item">📦 Free Delivery</div>
+<div class="trust-item">🧾 PDF Invoice</div>
+<div class="trust-item">💬 24/7 Customer Support</div>
+</div>
 
 <script>
-function porutham(b,g){
-  return b===g ? "ഉത്തമമായ വിവാഹ പൊരുത്തം ✅" : "സാധാരണ വിവാഹ പൊരുത്തം ⚠️";
-}
+const UPI_ID="8848522065@YBL";
 
-function allFilled(){
-  return boyName.value && girlName.value &&
-         boyDOB.value && girlDOB.value &&
-         boyTOB.value && girlTOB.value &&
-         boyStar.value && girlStar.value;
-}
-
-async function startPayment(){
-
-  // 🔴 BACKEND REQUIRED
-  const order = await (await fetch("/create-order",{method:"POST"})).json();
-
-  const options = {
-    key: "YOUR_RAZORPAY_KEY_ID",
-    amount: order.amount,
-    currency: "INR",
-    name: "Kerala Jyothisham",
-    description: "Marriage Porutham",
-    order_id: order.id,
-
-    method:{ upi:true },
-    upi:{
-      flow:"intent",
-      intents:["google_pay","phonepe","paytm"]
-    },
-
-    handler: async function (response) {
-
-      const verify = await (await fetch("/verify-payment",{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(response)
-      })).json();
-
-      if(verify.verified){
-
-        const res = porutham(boyStar.value, girlStar.value);
-        result.innerHTML = boyName.value+" & "+girlName.value+"<br>"+res;
-
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
-        doc.text("കേരള ജ്യോതിഷം",105,20,null,null,"center");
-        doc.text("വരൻ : "+boyName.value,20,40);
-        doc.text("വധു : "+girlName.value,20,55);
-        doc.text("ഫലം : "+res,20,75);
-        doc.save("Porutham.pdf");
-      } else {
-        alert("Payment Failed");
-      }
-    },
-    theme:{color:"#2e7d32"}
-  };
-
-  new Razorpay(options).open();
-}
-
-// 🔥 AUTO PAYMENT TRIGGER
-girlStar.addEventListener("change",()=>{
-  if(allFilled()){
-    startPayment();
+/* Marriage Porutham Payment */
+document.getElementById("payPoruthamBtn").addEventListener("click",()=>{
+  const bNameVal=document.getElementById("bName").value.trim();
+  const bDobVal=document.getElementById("bDob").value;
+  const bStarVal=document.getElementById("bStar").value.trim();
+  const gNameVal=document.getElementById("gName").value.trim();
+  const gDobVal=document.getElementById("gDob").value;
+  const gStarVal=document.getElementById("gStar").value.trim();
+  
+  if(!bNameVal||!bDobVal||!bStarVal||!gNameVal||!gDobVal||!gStarVal){
+    alert("All fields are mandatory"); return;
   }
+  
+  window.open(`upi://pay?pa=${UPI_ID}&pn=Kerala%20Jyothisham&am=10&cu=INR&tn=Marriage%20Porutham`, '_blank');
+  
+  setTimeout(()=>{
+    if(confirm("Payment completed?")){
+      const { jsPDF } = window.jspdf;
+      const doc=new jsPDF();
+      doc.setFontSize(16);
+      doc.text("Kerala Jyothisham - Marriage Porutham",20,20);
+      doc.setFontSize(12);
+      doc.text(`Boy: ${bNameVal} DOB: ${bDobVal} Star: ${bStarVal}`,20,35);
+      doc.text(`Girl: ${gNameVal} DOB: ${gDobVal} Star: ${gStarVal}`,20,43);
+      doc.text("Compatibility: Favorable",20,51);
+      doc.save("Marriage_Porutham.pdf");
+      alert("✅ PDF Generated Successfully");
+    }
+  },4000);
+});
+
+/* Navaratnam Single Product Selection */
+let selectedProduct="";
+document.querySelectorAll(".navBtn").forEach(btn=>{
+  btn.addEventListener("click",(e)=>{
+    const productDiv=e.target.closest(".product");
+    selectedProduct=productDiv.getAttribute("data-name");
+    // Clear previous inputs
+    document.getElementById("custName").value="";
+    document.getElementById("custDob").value="";
+    document.getElementById("custStar").value="";
+    document.getElementById("custPhone").value="";
+    document.getElementById("custAddr").value="";
+    document.getElementById("custPin").value="";
+    document.getElementById("detailPopup").style.display="flex";
+  });
+});
+
+document.getElementById("payBtn").addEventListener("click",()=>{
+  const name=document.getElementById("custName").value.trim();
+  const dob=document.getElementById("custDob").value;
+  const star=document.getElementById("custStar").value.trim();
+  const phone=document.getElementById("custPhone").value.trim();
+  const addr=document.getElementById("custAddr").value.trim();
+  const pin=document.getElementById("custPin").value.trim();
+  if(!name||!dob||!star||!phone||!addr||!pin){alert("All fields including delivery address are mandatory");return;}
+  
+  document.getElementById("detailPopup").style.display="none";
+  const amount=4500;
+  window.open(`upi://pay?pa=${UPI_ID}&pn=Kerala%20Jyothisham&am=${amount}&cu=INR&tn=${selectedProduct}`, '_blank');
+  
+  setTimeout(()=>{
+    if(confirm("Payment completed? Click OK to generate PDF and WhatsApp message")){
+      const { jsPDF } = window.jspdf;
+      const doc=new jsPDF();
+      doc.setFontSize(16);
+      doc.text("Kerala Jyothisham - Navaratnam Invoice",20,20);
+      doc.setFontSize(12);
+      doc.text(`Name: ${name}`,20,35);
+      doc.text(`DOB: ${dob} Star: ${star}`,20,43);
+      doc.text(`Phone: ${phone}`,20,51);
+      doc.text(`Address: ${addr}`,20,59);
+      doc.text(`Pincode: ${pin}`,20,67);
+      doc.text(`Product: ${selectedProduct}`,20,75);
+      doc.text(`Total Paid: ₹${amount}`,20,83);
+      doc.save("Navaratnam_Invoice.pdf");
+      const msg=`New Navaratnam Order\nName:${name}\nPhone:${phone}\nProduct:${selectedProduct}\nTotal:₹${amount}\nAddress:${addr}`;
+      window.open(`https://wa.me/919526522065?text=${encodeURIComponent(msg)}`,'_blank');
+    }
+  },1000);
 });
 </script>
 
