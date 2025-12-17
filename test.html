@@ -5,17 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>കേരള ജ്യോതിഷം | Trusted Astrology Services</title>
 
-<meta name="description" content="Accurate astrology, jathakam, marriage prediction & porutham checker">
+<meta name="description" content="Accurate astrology, jathakam, marriage prediction & horoscope services.">
+<meta name="keywords" content="Kerala Astrology, Jyothisham, Marriage Porutham">
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- jsPDF for auto PDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
 <style>
-body {
-  background: radial-gradient(circle at top, #f0fdf4, #ecfeff, #f8fafc);
+body{
+  background:radial-gradient(circle at top,#f0fdf4,#ecfeff,#f8fafc);
 }
+.fade{animation:fadeIn .8s ease}
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(15px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.big-porutham-btn{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:40px auto;
+  max-width:420px;
+  padding:22px;
+  font-size:26px;
+  font-weight:800;
+  color:#fff;
+  border-radius:18px;
+  background:linear-gradient(135deg,#dc2626,#ec4899,#f97316);
+  box-shadow:0 18px 40px rgba(0,0,0,.25);
+  transition:.3s;
+  text-decoration:none;
+}
+.big-porutham-btn:hover{transform:scale(1.05)}
 </style>
 </head>
 
@@ -23,156 +43,143 @@ body {
 
 <!-- HERO -->
 <section class="bg-gradient-to-r from-emerald-700 via-teal-600 to-cyan-600 text-white py-12 text-center">
-  <h1 class="text-5xl font-extrabold mb-4">🔮 കേരള ജ്യോതിഷം</h1>
-  <img src="ASTR.jpg" class="mx-auto w-40 rounded-full border-4 border-white shadow mb-4">
-  <p class="text-xl mb-4">Personal Astrology & Horoscope Consultation</p>
-  <div class="flex justify-center gap-4">
-    <span class="bg-white text-emerald-700 px-5 py-2 rounded-full font-bold">₹700 Consultation</span>
-    <span class="bg-black/30 px-5 py-2 rounded-full">100% Confidential</span>
-  </div>
+<h1 class="text-5xl font-extrabold mb-3">🔮 കേരള ജ്യോതിഷം</h1>
+<p class="text-xl">Personal Astrology & Horoscope Consultation</p>
+<div class="mt-5 inline-block bg-white text-emerald-700 px-6 py-3 rounded-full font-bold">
+₹700 per consultation
+</div>
 </section>
+
+<a href="porutham.html" class="big-porutham-btn">💖 Check Your Porutham 💖</a>
 
 <!-- SERVICES -->
 <section class="max-w-6xl mx-auto px-4 py-10">
-<h2 class="text-3xl font-bold text-center text-emerald-700 mb-8">Available Services</h2>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-<button onclick="setService('Marriage Prediction')" class="card">Marriage</button>
-<button onclick="setService('Career & Job')" class="card">Career</button>
-<button onclick="setService('Education')" class="card">Education</button>
-<button onclick="setService('Health')" class="card">Health</button>
+<h2 class="text-4xl font-bold text-center text-emerald-700 mb-10">🔮 Available Consultations</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+  <a href="#birthDetails" class="bg-white p-8 rounded-xl shadow text-center text-xl hover:bg-emerald-50">Marriage Prediction</a>
+  <a href="#birthDetails" class="bg-white p-8 rounded-xl shadow text-center text-xl hover:bg-emerald-50">Career & Job</a>
+  <a href="#birthDetails" class="bg-white p-8 rounded-xl shadow text-center text-xl hover:bg-emerald-50">Education</a>
+  <a href="#birthDetails" class="bg-white p-8 rounded-xl shadow text-center text-xl hover:bg-emerald-50">Family Issues</a>
+  <a href="#birthDetails" class="bg-white p-8 rounded-xl shadow text-center text-xl hover:bg-emerald-50">Child Birth</a>
+  <a href="#birthDetails" class="bg-white p-8 rounded-xl shadow text-center text-xl hover:bg-emerald-50">Health & Wellness</a>
 </div>
 </section>
 
-<style>
-.card{
-  background:white;padding:1.5rem;border-radius:1rem;
-  font-weight:600;box-shadow:0 10px 20px rgba(0,0,0,.1)
-}
-.card:hover{background:#ecfdf5}
-</style>
+<!-- FORM -->
+<section id="birthDetails" class="fade max-w-5xl mx-auto px-4 py-10">
+<div class="bg-white p-8 rounded-2xl shadow-xl">
 
-<!-- MAIN -->
-<section class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-8">
+<h2 class="text-3xl font-bold text-center text-emerald-700 mb-8">🔮 Birth Details</h2>
 
-<!-- BIRTH FORM -->
-<div class="bg-white p-6 rounded-xl shadow">
-<h3 class="font-bold text-emerald-700 mb-4">Birth Details</h3>
-<input type="hidden" id="serviceInput" value="Jathakam">
-
-<input id="name" placeholder="Full Name" class="w-full p-3 border rounded mb-3">
-<input type="date" id="dob" class="w-full p-3 border rounded mb-3">
-<input id="tob" placeholder="Birth Time (10:30 AM)" class="w-full p-3 border rounded mb-3">
-<input id="place" placeholder="Place of Birth" class="w-full p-3 border rounded mb-3">
-<input id="phone" placeholder="WhatsApp Number" class="w-full p-3 border rounded mb-3">
-
-<button onclick="payMain()" class="w-full bg-emerald-600 text-white py-3 rounded font-bold">
-Pay ₹700 via UPI
-</button>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <div>
+    <label class="font-semibold">Full Name</label>
+    <input id="name" class="w-full p-3 border rounded-lg">
+  </div>
+  <div>
+    <label class="font-semibold">Gender</label>
+    <select id="gender" class="w-full p-3 border rounded-lg">
+      <option value="">Select</option>
+      <option>Male</option>
+      <option>Female</option>
+    </select>
+  </div>
+  <div>
+    <label class="font-semibold">Date of Birth</label>
+    <input type="date" id="dob" class="w-full p-3 border rounded-lg">
+  </div>
+  <div>
+    <label class="font-semibold">Birth Time</label>
+    <input id="tob" placeholder="10:30 AM" class="w-full p-3 border rounded-lg">
+  </div>
 </div>
 
-<!-- PORUTHAM -->
-<div class="bg-white p-6 rounded-xl shadow">
-<h3 class="font-bold text-emerald-700 mb-4">💍 Paid Porutham Checker – ₹10</h3>
-
-<input id="girlName" placeholder="Girl Name" class="w-full p-2 border rounded mb-2">
-<input type="date" id="girlDOB" class="w-full p-2 border rounded mb-2">
-<input type="time" id="girlTime" class="w-full p-2 border rounded mb-2">
-
-<input id="boyName" placeholder="Boy Name" class="w-full p-2 border rounded mb-2">
-<input type="date" id="boyDOB" class="w-full p-2 border rounded mb-2">
-<input type="time" id="boyTime" class="w-full p-2 border rounded mb-3">
-
-<button onclick="payPorutham()" class="w-full bg-emerald-600 text-white py-2 rounded font-bold">
-Check Porutham – ₹10
-</button>
-
-<pre id="poruthamResult" class="mt-3 font-bold text-green-700 whitespace-pre-line"></pre>
+<div class="mt-4">
+  <label class="font-semibold">Place of Birth</label>
+  <input id="place" class="w-full p-3 border rounded-lg">
 </div>
 
+<div class="mt-4">
+  <label class="font-semibold">Nakshatram (optional)</label>
+  <select id="nakshatram" class="w-full p-3 border rounded-lg">
+    <option value="">Select Nakshatram</option>
+    <option>Aswathi</option><option>Bharani</option><option>Karthika</option>
+    <option>Rohini</option><option>Makayiram</option><option>Thiruvathira</option>
+    <option>Punartham</option><option>Pooyam</option><option>Ayilyam</option>
+    <option>Magha</option><option>Puram</option><option>Uttaram</option>
+    <option>Atham</option><option>Chithra</option><option>Chothi</option>
+    <option>Vishakham</option><option>Anizam</option><option>Thriketta</option>
+    <option>Mulam</option><option>Puradam</option><option>Uttardam</option>
+    <option>Thiruvonam</option><option>Avittam</option><option>Chathayam</option>
+    <option>Revathi</option>
+  </select>
+</div>
+
+<div class="mt-4">
+  <label class="font-semibold">WhatsApp Number</label>
+  <input id="phone" maxlength="10" class="w-full p-3 border rounded-lg">
+</div>
+
+<div class="mt-4">
+  <label class="font-semibold">Questions (optional)</label>
+  <textarea id="comments" class="w-full p-3 border rounded-lg"></textarea>
+</div>
+
+<!-- SUBMIT & PAY -->
+<button onclick="submitAndPay()"
+class="w-full mt-8 bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-4 rounded-xl text-xl font-extrabold hover:scale-105 transition">
+Submit & Pay ₹700
+</button>
+
+<p class="text-xs text-center text-gray-500 mt-3">
+🔒 Secure UPI Payment • GPay • PhonePe • Paytm<br>
+📞 Our team will contact you after payment is completed
+</p>
+
+</div>
 </section>
 
 <!-- FOOTER -->
 <footer class="bg-white py-6 text-center text-sm">
-📞 <a href="tel:9526522065" class="text-emerald-700 font-bold">+91 9526 522 065</a><br>
+📞 <a href="tel:9526522065" class="text-emerald-700 font-semibold">+91 9526 522 065</a><br>
 ✉️ jyothishamsonline@gmail.com<br>
-© Kerala Jyothisham
+© കേരള ജ്യോതിഷം
 </footer>
 
+<!-- WHATSAPP -->
 <a href="https://wa.me/919526522065"
-class="fixed bottom-5 right-5 bg-emerald-600 text-white p-4 rounded-full text-xl">💬</a>
+class="fixed bottom-5 right-5 bg-emerald-600 text-white p-4 rounded-full shadow-xl text-xl">
+💬
+</a>
 
 <script>
-// SERVICE
-function setService(s){ document.getElementById("serviceInput").value=s }
+function submitAndPay(){
+  const name = document.getElementById("name").value.trim();
+  const gender = document.getElementById("gender").value;
+  const dob = document.getElementById("dob").value;
+  const tob = document.getElementById("tob").value.trim();
+  const place = document.getElementById("place").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const nak = document.getElementById("nakshatram").value || "";
+  const q = document.getElementById("comments").value.trim();
 
-// MAIN PAYMENT
-function payMain(){
-  if(!name.value||!dob.value||!tob.value||!place.value){alert("Fill all details");return;}
-  window.location.href="upi://pay?pa=jyothishams@ptyes&pn=KeralaJyothisham&am=700&cu=INR";
-}
-
-// PORUTHAM PAYMENT
-function payPorutham(){
-  if(!girlName.value||!boyName.value||!girlDOB.value||!boyDOB.value||!girlTime.value||!boyTime.value){
-    alert("Fill all porutham details"); return;
+  if(!name || !gender || !dob || !tob || !place || !phone){
+    alert("Please fill all required birth details");
+    return;
   }
-  window.location.href="upi://pay?pa=jyothishams@ptyes&pn=KeralaJyothisham&am=10&cu=INR";
-  setTimeout(calculatePorutham,2500);
-}
 
-// PORUTHAM ALGORITHM + PDF
-function calculatePorutham(){
+  const note = encodeURIComponent(
+    "Jyothisham Consultation | " + name +
+    " | " + gender +
+    " | DOB: " + dob +
+    " | TOB: " + tob +
+    " | Place: " + place +
+    (nak ? " | Nakshatra: " + nak : "") +
+    (q ? " | Question: " + q : "")
+  );
 
-  const nak = [
-    "Aswathi","Bharani","Karthika","Rohini","Makayiram","Thiruvathira",
-    "Punartham","Pooyam","Ayilyam","Magha","Puram","Uttaram",
-    "Atham","Chithra","Chothi","Vishakham","Anizham","Thrikketta",
-    "Mulam","Pooradam","Uthradam","Thiruvonam","Avittam","Chathayam",
-    "Pururuttathi","Uthrittathi","Revathi"
-  ];
-
-  const gNak = Math.floor(new Date(`${girlDOB.value}T${girlTime.value}`).getTime()/60000)%27;
-  const bNak = Math.floor(new Date(`${boyDOB.value}T${boyTime.value}`).getTime()/60000)%27;
-  const diff = (bNak-gNak+27)%27;
-
-  let score=0;
-  if(diff>=7)score++;
-  if(diff%9!==0)score++;
-  if(bNak>gNak)score++;
-  if(gNak!==bNak)score++;
-
-  const verdict = score>=3 ? "GOOD MATCH – Marriage Recommended" : "AVERAGE MATCH – Consultation Needed";
-
-  const text =
-`Girl Nakshatra : ${nak[gNak]}
-Boy Nakshatra  : ${nak[bNak]}
-Porutham Score : ${score}/4
-Result : ${verdict}`;
-
-  poruthamResult.innerText=text;
-
-  generatePDF(score,verdict,nak[gNak],nak[bNak]);
-}
-
-function generatePDF(score,verdict,gNak,bNak){
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-
-  doc.text("KERALA JYOTHISHAM",105,20,{align:"center"});
-  doc.text("Paid Porutham Report",105,30,{align:"center"});
-
-  doc.text(`Girl : ${girlName.value}`,20,50);
-  doc.text(`Nakshatra : ${gNak}`,20,58);
-
-  doc.text(`Boy : ${boyName.value}`,20,70);
-  doc.text(`Nakshatra : ${bNak}`,20,78);
-
-  doc.text(`Score : ${score}/4`,20,95);
-  doc.text(`Result : ${verdict}`,20,105);
-
-  doc.text("Disclaimer: Automated report. Full horoscope matching advised.",20,130);
-
-  doc.save(`Porutham_${girlName.value}_${boyName.value}.pdf`);
+  window.location.href =
+  `upi://pay?pa=jyothishams@ptyes&pn=KeralaJyothisham&am=700&cu=INR&tn=${note}`;
 }
 </script>
 
